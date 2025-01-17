@@ -105,7 +105,7 @@
             {{/if}}
         <p>Course:{{course}}</p>
         <p>Semester:{{semester}} </p>
-        <form id="timetableForm" action="/saveeditedtimetable" method="post">
+        <form id="timetableForm" action="/saveeditedtimetable/{{data._id}}" method="post">
             <table>
                 <thead>
                     <tr>
@@ -120,49 +120,48 @@
                     <!-- Row for the Day -->
                     <tr>
                         <td rowspan="5">
-                            <input type="text" name="day" placeholder="{{data.day}}" >
+                            <input type="text" name="day" value="{{data.day}}">
                         </td>
                         <!-- First Row for Subject -->
                         <td><input type="text" name="subject1" value="{{data.firstPeriod.0.subject}}" ></td>
-                        <td><input type="time" name="startTime1" ></td>
-                        <td><input type="time" name="endTime1" ></td>
-                        <td><input type="text" name="tutor1" placeholder="Enter Tutor Name" ></td>
+                        <td><input type="time" name="startTime1"  value="{{data.firstPeriod.0.startingTime}}" ></td>
+                        <td><input type="time" name="endTime1"  value="{{data.firstPeriod.0.endingTime}}"></td>
+                        <td><input type="text" name="tutor1"  value="{{data.firstPeriod.0.tutor}}"></td>
                     </tr>
                     <!-- Second Row for Subject -->
                     <tr>
-                        <td><input type="text" name="subject2" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime2"></td>
-                        <td><input type="time" name="endTime2"></td>
-                        <td><input type="text" name="tutor2" placeholder="Enter Tutor Name"></td>
+                        <td><input type="text" name="subject2" value="{{data.secondPeriod.0.subject}}" ></td>
+                        <td><input type="time" name="startTime2"  value="{{data.secondPeriod.0.startingTime}}" ></td>
+                        <td><input type="time" name="endTime2"  value="{{data.secondPeriod.0.endingTime}}"></td>
+                        <td><input type="text" name="tutor2"  value="{{data.secondPeriod.0.tutor}}"></td>
                     </tr>
                     <!-- Third Row for Subject -->
                     <tr>
-                        <td><input type="text" name="subject3" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime3"></td>
-                        <td><input type="time" name="endTime3"></td>
-                        <td><input type="text" name="tutor3" placeholder="Enter Tutor Name"></td>
+                        <td><input type="text" name="subject3" value="{{data.thirdPeriod.0.subject}}" ></td>
+                        <td><input type="time" name="startTime3"  value="{{data.thirdPeriod.0.startingTime}}" ></td>
+                        <td><input type="time" name="endTime3"  value="{{data.thirdPeriod.0.endingTime}}"></td>
+                        <td><input type="text" name="tutor3"  value="{{data.thirdPeriod.0.tutor}}"></td>
                     </tr>
                     <!-- Fourth Row for Subject -->
                     <tr>
-                        <td><input type="text" name="subject4" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime4"></td>
-                        <td><input type="time" name="endTime4"></td>
-                        <td><input type="text" name="tutor4" placeholder="Enter Tutor Name"></td>
+                        <td><input type="text" name="subject4" value="{{data.fourthPeriod.0.subject}}" ></td>
+                        <td><input type="time" name="startTime4"  value="{{data.fourthPeriod.0.startingTime}}" ></td>
+                        <td><input type="time" name="endTime4"  value="{{data.fourthPeriod.0.endingTime}}"></td>
+                        <td><input type="text" name="tutor4"  value="{{data.fourthPeriod.0.tutor}}"></td>
                     </tr>
                     <!-- fifth Row for Subject -->
                     <tr>
-                        <td><input type="text" name="subject5" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime5"></td>
-                        <td><input type="time" name="endTime5"></td>
-                        <td><input type="text" name="tutor5" placeholder="Enter Tutor Name"></td>
+                        <td><input type="text" name="subject5" value="{{data.fifthPeriod.0.subject}}" ></td>
+                        <td><input type="time" name="startTime5"  value="{{data.fifthPeriod.0.startingTime}}" ></td>
+                        <td><input type="time" name="endTime5"  value="{{data.fifthPeriod.0.endingTime}}"></td>
+                        <td><input type="text" name="tutor5"  value="{{data.fifthPeriod.0.tutor}}"></td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- Save Button -->
             <div  class="button-container">
-                       <button type="submit" class="save-button" name="action" value="save">Save and Next</button>
-                       <button type="submit" class="save-button" name="action" value="submit">Submit</button>
+                       <button type="submit" class="save-button" name="action" value="save">Edit and Save</button>
              </div>
         </form>
     </div>
@@ -170,7 +169,7 @@
     <script>
 
             // Retrieve course and semester from sessionStorage and display them
-            document.addEventListener("DOMContentLoaded", () => {
+          /**  document.addEventListener("DOMContentLoaded", () => {
                 const course = sessionStorage.getItem("selectedCourse");
                 const semester = sessionStorage.getItem("selectedSemester");
 
@@ -213,7 +212,7 @@
                     console.error('Error:', error);
                     alert('Failed to save timetable.');
                 });
-        }
+        }*/
     </script>  
 </body>
 

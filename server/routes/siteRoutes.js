@@ -32,6 +32,7 @@ router.post('/facultysignup', siteControllers.facultySignup_validation);
 router.post('/save-timetable',siteControllers.saveTimeTable);
 router.post('/displayTimeTable',siteControllers.displayTimeTable);
 router.post('/addTimeTable', siteControllers.addtimetable);
+router.post('/saveeditedtimetable/:id',siteControllers.saveEditedTimetable)
 //router.get('/view-time-table',siteControllers.viewTimeTable)
 //router.post('/submitClassSelected',siteControllers.submitClassSelected)
 

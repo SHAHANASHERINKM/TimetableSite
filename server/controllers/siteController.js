@@ -3,6 +3,7 @@ const studentCollection = require('../models/studentUser');
 const facultyCollection = require('../models/facultyUser');
 // Import collections
 const { mcaS1collection, mscS1collection, mcaS2collection, mscS2collection } = require('../models/timetable');
+const { default: mongoose } = require('mongoose');
 
 // Dynamic collection mapping
 const collectionMapping = {
@@ -541,23 +542,18 @@ module.exports = {
 
           displayTimeTable:async(req,res)=>{
 
-            console.log(req.body);
+           console.log(req.body);
            const course=req.body.course;
            const semester=req.body.semester;
            req.session.course =course;
            req.session.semester = semester;
-           //console.log(req.session.course)
+          //  console.log(req.session.course)
 
            if (course=="MCA" && semester=="S1"){
             const s1data=  await mcaS1collection.find();
             console.log(s1data);
             res.render("timeTable",{data:s1data,course,semester});
-
            }
-
-           
-            
-           
           },
 
           editTimeTable:async(req,res)=>{
@@ -571,8 +567,33 @@ module.exports = {
               res.render("editTimeTable",{course,semester,data:timetable})
             }
          },
-
-        
-
-
+         saveEditedTimetable:async(req,res)=>{
+           const id = req.params.id
+           console.log(id)
+           const updatedData = await mcaS1collection.findByIdAndUpdate({_id:id},{
+            day:req.body.day,
+            'firstPeriod.0.subject':req.body.subject1,
+            'firstPeriod.0.startingTime':req.body.startTime1,
+            'firstPeriod.0.endingTime':req.body.endTime1,
+            'firstPeriod.0.tutor':req.body.tutor1,
+            'secondPeriod.0.subject':req.body.subject2,
+            'secondPeriod.0.startingTime':req.body.startTime2,
+            'secondPeriod.0.endingTime':req.body.endTime2,
+            'secondPeriod.0.tutor':req.body.tutor2,
+            'thirdPeriod.0.subject':req.body.subject3,
+            'thirdPeriod.0.startingTime':req.body.startTime3,
+            'thirdPeriod.0.endingTime':req.body.endTime3,
+            'thirdPeriod.0.tutor':req.body.tutor3,
+            'fourthPeriod.0.subject':req.body.subject4,
+            'fourthPeriod.0.startingTime':req.body.startTime4,
+            'fourthPeriod.0.endingTime':req.body.endTime4,
+            'fourthPeriod.0.tutor':req.body.tutor4,
+            'fifthPeriod.0.subject':req.body.subject5,
+            'fifthPeriod.0.startingTime':req.body.startTime5,
+            'fifthPeriod.0.endingTime':req.body.endTime5,
+            'fifthPeriod.0.tutor':req.body.tutor5
+           },{new:true,runValidators:true});
+           const data = await mcaS1collection.find({_id:id});
+           res.render("timeTable",{data:data,course:req.session.course,semester:req.session.semester});
+         }
 }
