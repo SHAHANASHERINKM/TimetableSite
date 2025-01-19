@@ -75,10 +75,38 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
+            font-size: 12px;
         }
-        .view-time-table{
+        .btn a{
+            text-decoration: none;
+            color: #fff;
+        }
+ 
+       .view-time-table {
+         background-color: #4CAF50; /* Green background */
+         border: none; /* Remove border */
+         color: white; /* White text */
+         padding: 10px 20px; /* Padding */
+         text-align: center; /* Center the text */
+         text-decoration: none; /* Remove underline */
+         display: inline-block; /* Inline-block layout */
+         font-size: 14px; /* Text size */
+         font-weight: bold; /* Bold text */
+         border-radius: 8px; /* Rounded corners */
+         transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+         cursor: pointer; /* Pointer cursor on hover */
+         margin: 0 10px;
+       }
 
-        }
+       .view-time-table:hover {
+         background-color: #45a049; /* Darker green on hover */
+         transform: scale(1.05); /* Slight zoom effect */
+       }
+
+       .view-time-table:active {
+         background-color: #3e8e41; /* Even darker green when clicked */
+         transform: scale(0.95); /* Slightly smaller on click */
+        }       
 
         .btn:hover {
             background-color: #218838;
@@ -89,11 +117,6 @@
             td {
                 font-size: 14px;
                 padding: 8px;
-            }
-
-            .btn {
-                padding: 4px 8px;
-                font-size: 12px;
             }
         }
     </style>
@@ -114,6 +137,8 @@
             <option value="">--Select Semester--</option>
             <option value="S1">Semester 1</option>
             <option value="S2">Semester 2</option>
+            <option value="S3">Semester 3</option>
+            <option value="S4">Semester 4</option>
         </select>
          <button type="submit" class="view-time-table"><a>view Time Table</a></button>
     </div>
@@ -170,214 +195,9 @@
                     <td>{{fifthPeriod.0.tutor}}</td>
                 </tr>
             {{/each}}
-               <!-- <tr>
-                    <td rowspan="5">Tuesday</td>
-                    <td>Mathematics</td>
-                    <td>09:00 AM</td>
-                    <td>10:00 AM</td>
-                    <td>Mr. Smith</td>
-                    <td rowspan="5">
-                        <button class="btn" onclick="redirectToEditPage('Tuesday')">Edit</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Physics</td>
-                    <td>10:15 AM</td>
-                    <td>11:15 AM</td>
-                    <td>Ms. Johnson</td>
-                </tr>
-                <tr>
-                    <td>Chemistry</td>
-                    <td>11:30 AM</td>
-                    <td>12:30 PM</td>
-                    <td>Dr. Brown</td>
-                </tr>
-                <tr>
-                    <td>Biology</td>
-                    <td>01:00 PM</td>
-                    <td>02:00 PM</td>
-                    <td>Dr. Green</td>
-                </tr>
-                <tr>
-                    <td>Computer Science</td>
-                    <td>02:15 PM</td>
-                    <td>03:15 PM</td>
-                    <td>Mr. White</td>
-                </tr>
-                <tr>
-                    <td rowspan="5">wednesday</td>
-                    <td>Mathematics</td>
-                    <td>09:00 AM</td>
-                    <td>10:00 AM</td>
-                    <td>Mr. Smith</td>
-                    <td rowspan="5">
-                        <button class="btn" onclick="redirectToEditPage('Wednesday')">Edit</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Physics</td>
-                    <td>10:15 AM</td>
-                    <td>11:15 AM</td>
-                    <td>Ms. Johnson</td>
-                </tr>
-                <tr>
-                    <td>Chemistry</td>
-                    <td>11:30 AM</td>
-                    <td>12:30 PM</td>
-                    <td>Dr. Brown</td>
-                </tr>
-                <tr>
-                    <td>Biology</td>
-                    <td>01:00 PM</td>
-                    <td>02:00 PM</td>
-                    <td>Dr. Green</td>
-                </tr>
-                <tr>
-                    <td>Computer Science</td>
-                    <td>02:15 PM</td>
-                    <td>03:15 PM</td>
-                    <td>Mr. White</td>
-                </tr>
-                <tr>
-                    <td rowspan="5">Thursday</td>
-                    <td>Mathematics</td>
-                    <td>09:00 AM</td>
-                    <td>10:00 AM</td>
-                    <td>Mr. Smith</td>
-                    <td rowspan="5">
-                        <button class="btn" onclick="redirectToEditPage('Thursday')">Edit</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Physics</td>
-                    <td>10:15 AM</td>
-                    <td>11:15 AM</td>
-                    <td>Ms. Johnson</td>
-                </tr>
-                <tr>
-                    <td>Chemistry</td>
-                    <td>11:30 AM</td>
-                    <td>12:30 PM</td>
-                    <td>Dr. Brown</td>
-                </tr>
-                <tr>
-                    <td>Biology</td>
-                    <td>01:00 PM</td>
-                    <td>02:00 PM</td>
-                    <td>Dr. Green</td>
-                </tr>
-                <tr>
-                    <td>Computer Science</td>
-                    <td>02:15 PM</td>
-                    <td>03:15 PM</td>
-                    <td>Mr. White</td>
-                </tr>
-                <tr>
-                    <td rowspan="5">friday</td>
-                    <td>Mathematics</td>
-                    <td>09:00 AM</td>
-                    <td>10:00 AM</td>
-                    <td>Mr. Smith</td>
-                    <td rowspan="5">
-                        <button class="btn" onclick="redirectToEditPage('Friday')"><a href="/">Edit</a></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Physics</td>
-                    <td>10:15 AM</td>
-                    <td>11:15 AM</td>
-                    <td>Ms. Johnson</td>
-                </tr>
-                <tr>
-                    <td>Chemistry</td>
-                    <td>11:30 AM</td>
-                    <td>12:30 PM</td>
-                    <td>Dr. Brown</td>
-                </tr>
-                <tr>
-                    <td>Biology</td>
-                    <td>01:00 PM</td>
-                    <td>02:00 PM</td>
-                    <td>Dr. Green</td>
-                </tr>
-                <tr>
-                    <td>Computer Science</td>
-                    <td>02:15 PM</td>
-                    <td>03:15 PM</td>
-                    <td>Mr. White</td>
-                </tr>
-                -->
             </tbody>
         </table>
     </div>
-
-    <script>
-        /**const courseSelect = document.getElementById('course');
-        const semesterSelect = document.getElementById('semester');
-        const timetableContainer = document.getElementById('timetable');*/
-
-        // Show the timetable if both course and semester are selected
-     /**   function showTimetable() {
-            if (courseSelect.value && semesterSelect.value) {
-                timetableContainer.style.display = 'block';
-            } else {
-                timetableContainer.style.display = 'none';
-            }
-        }*/
-
-        // Save course and semester to localStorage when selected
-       /** function saveSelectionsToLocalStorage() {
-            localStorage.setItem('selectedCourse', courseSelect.value);
-            localStorage.setItem('selectedSemester', semesterSelect.value);
-        }*/
-
-        // Reset the selections (clear course and semester) and hide timetable when page loads
-       /** function resetSelectionsOnLoad() {
-            courseSelect.value = "";
-            semesterSelect.value = "";
-            timetableContainer.style.display = 'none';  // Ensure timetable is hidden initially
-        }*/
-
-        // Check if we came from the edit page and clear selections
-        /**function checkIfComingFromEditPage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const fromEditPage = urlParams.has('day'); // If there's a "day" parameter, we assume we came from the edit page
-
-            if (fromEditPage) {
-                resetSelectionsOnLoad(); // Clear selections if we came back from the edit page
-            } else {
-                // If no "day" parameter, load from localStorage (if available)
-                const selectedCourse = localStorage.getItem('selectedCourse');
-                const selectedSemester = localStorage.getItem('selectedSemester');
-
-                if (selectedCourse && selectedSemester) {
-                    courseSelect.value = selectedCourse;
-                    semesterSelect.value = selectedSemester;
-                }
-            }
-
-            showTimetable();  // Evaluate timetable visibility
-        }
-
-        // Call checkIfComingFromEditPage on page load
-        checkIfComingFromEditPage();
-
-        // Event listeners to update localStorage when the user selects a course or semester
-        courseSelect.addEventListener('change', function() {
-            saveSelectionsToLocalStorage();
-            showTimetable();  // Re-evaluate to show the timetable when course is selected
-        });
-
-        semesterSelect.addEventListener('change', function() {
-            saveSelectionsToLocalStorage();
-            showTimetable();  // Re-evaluate to show the timetable when semester is selected
-        });
-
-        // Redirect to the edit page for the selected day
-        function redirectToEditPage(day) {
-            window.location.href = `edit.html?day=${encodeURIComponent(day)}`;
-        }*/
-    </script>
 </body>
 
 </html>

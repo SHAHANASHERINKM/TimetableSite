@@ -17,6 +17,13 @@ app.use(session({
     saveUninitialized: true
   }));
 
+  hbs.registerHelper('increment', function (value) {
+    return value + 1;
+  });
+  hbs.registerHelper('objectEntries', (obj) => {
+    return Object.entries(obj || {}); // Convert object to array of key-value pairs
+  });
+  
 const routes=require('./server/routes/siteRoutes.js')
 
 

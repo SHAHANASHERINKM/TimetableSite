@@ -1,202 +1,450 @@
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutor's Schedule</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 16px;
+      text-align: center;
+    }
+    th {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #d1ecf1;
+      cursor: pointer;
+    }
+    td {
+      color: #333;
+    }
+    caption {
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Current Day Schedule</h1>
+
+  <!-- Table -->
+  {{#each data}}
+  <table>
+    <caption>Today's Periods</caption>
+    <h2>{{Course}}</h2>
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Time</th>
+        <th>Course</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody id="scheduleTable">
+      <!-- Rows will be dynamically added here -->
+      {{#each Periods}}
+        {{#if this}}
+          {{#each this}}
+            <tr>
+             <td>{{@../key}}</td>
+             <td>{{subject}}-{{this.0.endingTime}}</td>
+             <td>{{subject}}</td>
+             <td>{{tutor}}</td>
+            </tr>
+         {{/each}}
+       {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
+  {{/each}}
+</body>
+</html> --}}
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetables</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 16px;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <h1>Timetables for Monday</h1>
+
+  {{#each data}}
+    <h2>{{course}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Subject</th>
+          <th>Tutor</th>
+          <th>Starting Time</th>
+          <th>Ending Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each periods}}
+         {{#unless _id}}
+          {{#if this}}
+            {{#each this}}
+            
+              <tr>
+                <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
+                <td>{{this.subject}}</td>
+                <td>{{this.tutor}}</td>
+                <td>{{this.startingTime}}</td>
+                <td>{{this.endingTime}}</td>
+              </tr>
+           
+            {{/each}}
+          {{/if}}
+          {{/unless}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{/each}}
+</body>
+</html> --}}
+
+{{!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetables</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #444;
+    }
+
+    h2 {
+      margin: 20px 0 10px;
+      color: #555;
+      font-size: 20px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Alternating row colors */
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    /* Hover effect on table rows */
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Timetables for Monday</h1>
+
+  {{#each data}}
+    <h2>{{course}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Subject</th>
+          <th>Tutor</th>
+          <th>Starting Time</th>
+          <th>Ending Time</th>
+          <th>Course</th> <!-- Add Course column -->
+        </tr>
+      </thead>
+      <tbody>
+        {{#each periods}}
+          {{#unless _id}}
+            {{#if this}}
+              {{#each this}}
+                <tr>
+                  <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
+                  <td>{{this.subject}}</td>
+                  <td>{{this.tutor}}</td>
+                  <td>{{this.startingTime}}</td>
+                  <td>{{this.endingTime}}</td>
+                  <td>{{this.course}}</td> <!-- Add Course field -->
+                </tr>
+              {{/each}}
+            {{/if}}
+          {{/unless}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{/each}}
+</body>
+</html> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <link rel="stylesheet" href="/css/viewTimetable.css" type="text/css">
-  
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetables</title>
+  <style>
+    /* General body styling */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #444;
+    }
+
+    h2 {
+      margin: 20px 0 10px;
+      color: #555;
+      font-size: 20px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      text-align: center;
+    }
+
+    /* Button styling */
+    .view-all-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 14px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    td {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Alternating row colors */
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+    /* Hover effect on table rows */
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    /* Responsive table */
+    @media (max-width: 768px) {
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 8px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      .view-all-btn {
+        font-size: 12px;
+        padding: 8px 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-                      <!-- navbar -->
-                       
-                      <!-- shcedule -->
+  <!-- View All Button -->
+  <button class="view-all-btn" onclick="window.location.href='/all-timetables-for-faculty';">View All Day</button>
 
-    <div class="idance">
-        <h2>Schedule</h2>
+  <h1>Timetables for Monday</h1>
 
-        <!-- Navigation Links -->
-        
-        <nav class="nav nav-tabs nav-links">
-            <a href="#" data-target="Monday" class="nav-link active">Mon</a>
-            <a href="#" data-target="Tuesday" class="nav-link">Tue</a>
-            <a href="#" data-target="Wednesday" class="nav-link">Wed</a>
-            <a href="#" data-target="Thursday" class="nav-link">Thu</a>
-            <a href="#" data-target="Friday" class="nav-link">Fri</a>
-              </nav>
-           
-        <!-- Content Sections -->
-        <div id="Monday" class="content-section active">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Contemporary Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            
-        </div>
-
-        <div id="Tuesday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            
-        </div>
-
-        <!-- Additional Content Sections -->
-        <div id="Wednesday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">wednesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-        <div id="Thursday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">thursday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-        <div id="Friday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">friday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-       
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Select all links and content sections
-        const links = document.querySelectorAll('.nav-links a');
-        const contentSections = document.querySelectorAll('.content-section');
-    
-        // Function to get the current day's name
-        function getDayName() {
-            const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-            const todayIndex = new Date().getDay() - 1; // Sunday = 0, so Monday = 1
-            return days[todayIndex] || "Monday"; // Default to Monday if out of range
-        }
-    
-        // Automatically activate the current day's schedule
-        function activateTodaySchedule() {
-            const today = getDayName();
-    
-            // Remove active class from all links and sections
-            links.forEach(link => link.classList.remove('active'));
-            contentSections.forEach(section => section.classList.remove('active'));
-    
-            // Find and activate the link and section for today
-            const todayLink = Array.from(links).find(link => link.getAttribute('data-target') === today);
-            const todaySection = document.getElementById(today);
-    
-            if (todayLink && todaySection) {
-                todayLink.classList.add('active');
-                todaySection.classList.add('active');
-            }
-        }
-    
-        // Add click event listeners to all links
-        links.forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault(); // Prevent default anchor behavior
-    
-                // Remove active class from all links and content sections
-                links.forEach(l => l.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-    
-                // Add active class to the clicked link
-                link.classList.add('active');
-    
-                // Show the corresponding content section
-                const targetId = link.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-    
-        // Call the function to activate today's schedule on page load
-        document.addEventListener('DOMContentLoaded', activateTodaySchedule);
-    </script>
-    
+  {{#each data}}
+    <h2>{{course}}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Subject</th>
+          <th>Tutor</th>
+          <th>Starting Time</th>
+          <th>Ending Time</th>
+          <th>Course</th> <!-- Add Course column -->
+        </tr>
+      </thead>
+      <tbody>
+        {{#each periods}}
+          {{#unless _id}}
+            {{#if this}}
+              {{#each this}}
+                <tr>
+                  <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
+                  <td>{{this.subject}}</td>
+                  <td>{{this.tutor}}</td>
+                  <td>{{this.startingTime}}</td>
+                  <td>{{this.endingTime}}</td>
+                  <td>{{this.course}}</td> <!-- Add Course field -->
+                </tr>
+              {{/each}}
+            {{/if}}
+          {{/unless}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{/each}}
 </body>
 </html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Student Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      color: #444;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    }
+
+    .form-group button {
+      display: block;
+      width: 100%;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      text-transform: uppercase;
+      transition: background-color 0.3s;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Edit Student Details</h1>
+  <div class="container">
+    <form action="/edit-student-details/{{data._id}}" method="post">
+      <!-- Student Name -->
+
+      <div class="form-group">
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" name="name" value="{{data.name}}" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="{{data.email}}" required>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" value="{{data.phone}}" pattern="[0-9]{10}" title="Enter a valid 10-digit phone number" required>
+      </div>
+
+      <!-- Course -->
+      <div class="form-group">
+        <label for="course">Course</label>
+        <select id="course" name="course" required>
+          <option value="{{data.course}}">{{data.course}}</option>
+          <option value="MCA">MCA</option>
+          <option value="MSC">MSC</option>
+        </select>
+      </div>
+
+      <!-- Semester -->
+      <div class="form-group">
+        <label for="semester">Semester</label>
+        <select id="semester" name="semester" required>
+          <option value="{{data.semester}}">{{data.semester}}</option>
+          <option value="S1">S1</option>
+          <option value="S2">S2</option>
+          <option value="S3">S3</option>
+          <option value="S4">S4</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group">
+        <button type="submit">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

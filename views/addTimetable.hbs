@@ -133,35 +133,70 @@
                         <td><input type="text" name="subject1" placeholder="Enter Subject" ></td>
                         <td><input type="time" name="startTime1" ></td>
                         <td><input type="time" name="endTime1" ></td>
-                        <td><input type="text" name="tutor1" placeholder="Enter Tutor Name" ></td>
+                        <td>
+                            <select id="tutor" name="tutor1" >
+                                <option value="">Select Tutor</option>
+                                {{#each tutors}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select> 
+                        </td>
                     </tr>
                     <!-- Second Row for Subject -->
                     <tr>
                         <td><input type="text" name="subject2" placeholder="Enter Subject"></td>
                         <td><input type="time" name="startTime2"></td>
                         <td><input type="time" name="endTime2"></td>
-                        <td><input type="text" name="tutor2" placeholder="Enter Tutor Name"></td>
+                        <td>
+                            <select id="tutor" name="tutor2" >
+                                <option value="">Select Tutor</option>
+                                {{#each tutors}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select> 
+                        </td>
                     </tr>
                     <!-- Third Row for Subject -->
                     <tr>
                         <td><input type="text" name="subject3" placeholder="Enter Subject"></td>
                         <td><input type="time" name="startTime3"></td>
                         <td><input type="time" name="endTime3"></td>
-                        <td><input type="text" name="tutor3" placeholder="Enter Tutor Name"></td>
+                        <td>
+                            <select id="tutor" name="tutor3" >
+                                <option value="">Select Tutor</option>
+                                {{#each tutors}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select> 
+                        </td>
                     </tr>
                     <!-- Fourth Row for Subject -->
                     <tr>
                         <td><input type="text" name="subject4" placeholder="Enter Subject"></td>
                         <td><input type="time" name="startTime4"></td>
                         <td><input type="time" name="endTime4"></td>
-                        <td><input type="text" name="tutor4" placeholder="Enter Tutor Name"></td>
+                        <td>
+                            <select id="tutor" name="tutor4" >
+                                <option value="">Select Tutor</option>
+                                {{#each tutors}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select> 
+                        </td>
                     </tr>
                     <!-- fifth Row for Subject -->
                     <tr>
                         <td><input type="text" name="subject5" placeholder="Enter Subject"></td>
                         <td><input type="time" name="startTime5"></td>
                         <td><input type="time" name="endTime5"></td>
-                        <td><input type="text" name="tutor5" placeholder="Enter Tutor Name"></td>
+                        <td>
+                            <select id="tutor" name="tutor5" >
+                                <option value="">Select Tutor</option>
+                                {{#each tutors}}
+                                <option value="{{name}}">{{name}}</option>
+                                {{/each}}
+                            </select> 
+                        </td>
                     </tr>
                 </tbody>
             </table>

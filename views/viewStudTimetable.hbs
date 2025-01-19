@@ -1,202 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <link rel="stylesheet" href="/css/viewTimetable.css" type="text/css">
-  
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Timetable</title>
+  <style>
+    /* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9; /* Light gray background */
+  color: #333; /* Text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Timetable Container */
+.timetable-container {
+  position: relative;
+  width: 90%;
+  max-width: 700px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+/* Show All Timetables Button */
+.all-timetable-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: #4CAF50; /* Green button */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.all-timetable-btn a{
+  text-decoration: none;
+  color: #ddd;
+}
+.all-timetable-btn:hover {
+  background-color: #45a049; /* Darker green */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Timetable Box */
+.timetable-box h2 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd; /* Light border */
+}
+
+th {
+  background-color: #4CAF50; /* Green header */
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Highlight on hover */
+}
+
+  </style>
 </head>
 <body>
-                      <!-- navbar -->
-                       
-                      <!-- shcedule -->
+  <!-- Container for the timetable -->
+  <div class="timetable-container">
+    <!-- "Show All Day Timetable" Button -->
+    <button class="all-timetable-btn"><a href="/show-all-day-timetable-student">Show All Day</a></button>
 
-    <div class="idance">
-        <h2>Schedule</h2>
-
-        <!-- Navigation Links -->
-        
-        <nav class="nav nav-tabs nav-links">
-            <a href="#" data-target="Monday" class="nav-link active">Mon</a>
-            <a href="#" data-target="Tuesday" class="nav-link">Tue</a>
-            <a href="#" data-target="Wednesday" class="nav-link">Wed</a>
-            <a href="#" data-target="Thursday" class="nav-link">Thu</a>
-            <a href="#" data-target="Friday" class="nav-link">Fri</a>
-              </nav>
-           
-        <!-- Content Sections -->
-        <div id="Monday" class="content-section active">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Contemporary Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            
-        </div>
-
-        <div id="Tuesday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            
-        </div>
-
-        <!-- Additional Content Sections -->
-        <div id="Wednesday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">wednesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-        <div id="Thursday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">thursday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-        <div id="Friday" class="content-section">
-            <div class="timetable-item">
-                <div class="timetable-item-time">9:30am- 10:30am</div>
-                <div class="timetable-item-name">friday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">10:30am- 11:30am</div>
-                <div class="timetable-item-name">Tuesday</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">11:30am- 12:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">1:30pm- 2:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-            <div class="timetable-item">
-                <div class="timetable-item-time">2:30pm- 3:30pm</div>
-                <div class="timetable-item-name">Break Dance</div>
-            </div>
-        </div>
-       
+    <!-- Timetable Box -->
+    <div class="timetable-box">
+      {{#if data}}
+      <h2>Today's Timetable - {{data.day}}</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Subject</th>
+            <th>Starting Time</th>
+            <th>Ending Time</th>
+            <th>Tutor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1st Period</td>
+            <td>{{data.firstPeriod.0.subject}}</td>
+            <td>{{data.firstPeriod.0.startingTime}}</td>
+            <td>{{data.firstPeriod.0.endingTime}}</td>
+            <td>{{data.firstPeriod.0.tutor}}</td>
+          </tr>
+          <tr>
+            <td>2nd Period</td>
+            <td>{{data.secondPeriod.0.subject}}</td>
+            <td>{{data.secondPeriod.0.startingTime}}</td>
+            <td>{{data.secondPeriod.0.endingTime}}</td>
+            <td>{{data.secondPeriod.0.tutor}}</td>
+          </tr>
+          <tr>
+            <td>3rd Period</td>
+            <td>{{data.thirdPeriod.0.subject}}</td>
+            <td>{{data.thirdPeriod.0.startingTime}}</td>
+            <td>{{data.thirdPeriod.0.endingTime}}</td>
+            <td>{{data.thirdPeriod.0.tutor}}</td>
+          </tr>
+          <tr>
+            <td>4th Period</td>
+            <td>{{data.fourthPeriod.0.subject}}</td>
+            <td>{{data.fourthPeriod.0.startingTime}}</td>
+            <td>{{data.fourthPeriod.0.endingTime}}</td>
+            <td>{{data.fourthPeriod.0.tutor}}</td>
+          </tr>
+          <tr>
+            <td>5th Period</td>
+            <td>{{data.fifthPeriod.0.subject}}</td>
+            <td>{{data.fifthPeriod.0.startingTime}}</td>
+            <td>{{data.fifthPeriod.0.endingTime}}</td>
+            <td>{{data.fifthPeriod.0.tutor}}</td>
+          </tr>
+        </tbody>
+      </table>
+      {{else}}
+      <h3 style="color:#FFB300;">Today's Timetabel Is Not Available</h3>
+      {{/if}}
     </div>
-
-    <!-- JavaScript -->
-    <script>
-        // Select all links and content sections
-        const links = document.querySelectorAll('.nav-links a');
-        const contentSections = document.querySelectorAll('.content-section');
-    
-        // Function to get the current day's name
-        function getDayName() {
-            const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-            const todayIndex = new Date().getDay() - 1; // Sunday = 0, so Monday = 1
-            return days[todayIndex] || "Monday"; // Default to Monday if out of range
-        }
-    
-        // Automatically activate the current day's schedule
-        function activateTodaySchedule() {
-            const today = getDayName();
-    
-            // Remove active class from all links and sections
-            links.forEach(link => link.classList.remove('active'));
-            contentSections.forEach(section => section.classList.remove('active'));
-    
-            // Find and activate the link and section for today
-            const todayLink = Array.from(links).find(link => link.getAttribute('data-target') === today);
-            const todaySection = document.getElementById(today);
-    
-            if (todayLink && todaySection) {
-                todayLink.classList.add('active');
-                todaySection.classList.add('active');
-            }
-        }
-    
-        // Add click event listeners to all links
-        links.forEach(link => {
-            link.addEventListener('click', event => {
-                event.preventDefault(); // Prevent default anchor behavior
-    
-                // Remove active class from all links and content sections
-                links.forEach(l => l.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-    
-                // Add active class to the clicked link
-                link.classList.add('active');
-    
-                // Show the corresponding content section
-                const targetId = link.getAttribute('data-target');
-                document.getElementById(targetId).classList.add('active');
-            });
-        });
-    
-        // Call the function to activate today's schedule on page load
-        document.addEventListener('DOMContentLoaded', activateTodaySchedule);
-    </script>
-    
+  </div>
 </body>
 </html>

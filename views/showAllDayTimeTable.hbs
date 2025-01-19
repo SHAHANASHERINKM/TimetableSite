@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Weekly Timetable</title>
+  <style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: #f3f4f6;
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* Container Styles */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table Heading */
+  .container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4CAF50;
+    font-size: 24px;
+  }
+  
+  /* Table Styles */
+  .table-responsive {
+    overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+  }
+  
+  .timetable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  
+  .timetable th,
+  .timetable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+  
+  .timetable th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .timetable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .timetable tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .timetable td strong {
+    color: #333;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .timetable td em {
+    font-style: italic;
+    color: #666;
+    font-size: 12px;
+  }
+  
+  /* Responsive Design for Small Screens */
+  @media (max-width: 768px) {
+    .timetable th, .timetable td {
+      font-size: 12px;
+      padding: 8px;
+    }
+  
+    .container h1 {
+      font-size: 18px;
+    }
+  }
+  
+  /* Extra Small Screens */
+  @media (max-width: 480px) {
+    .timetable th, .timetable td {
+      font-size: 10px;
+      padding: 6px;
+    }
+  
+    .container h1 {
+      font-size: 16px;
+    }
+  
+    .timetable td strong, .timetable td em {
+      font-size: 10px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Weekly Timetable</h1>
+    <div class="table-responsive">
+      <table class="timetable">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>1st Period</th>
+            <th>2nd Period</th>
+            <th>3rd Period</th>
+            <th>4th Period</th>
+            <th>5th Period</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+          <tr>
+            <td>{{day}}</td>
+            <td>
+              <strong>{{firstPeriod.0.subject}}</strong><br>
+              {{firstPeriod.0.startingTime}} - {{firstPeriod.0.endingTime}}<br>
+              <em>{{firstPeriod.0.tutor}}</em>
+            </td>
+            <td>
+              <strong>{{secondPeriod.0.subject}}</strong><br>
+              {{secondPeriod.0.startingTime}} - {{secondPeriod.0.endingTime}}<br>
+              <em>{{secondPeriod.0.tutor}}</em>
+            </td>
+            <td>
+              <strong>{{thirdPeriod.0.subject}}</strong><br>
+              {{thirdPeriod.0.startingTime}} - {{thirdPeriod.0.endingTime}}<br>
+              <em>{{thridPeriod.0.tutor}}</em>
+            </td>
+            <td>
+              <strong>{{fourthPeriod.0.subject}}</strong><br>
+              {{fourthPeriod.0.startingTime}} - {{fourthPeriod.0.endingTime}}<br>
+              <em>{{fourthPeriod.0.tutor}}</em>
+            </td>
+            <td>
+              <strong>{{fifthPeriod.0.subject}}</strong><br>
+              {{fifthPeriod.0.startingTime}} - {{fifthPeriod.0.endingTime}}<br>
+              <em>{{fifthPeriod.0.tutor}}</em>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
