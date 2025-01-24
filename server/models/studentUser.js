@@ -33,8 +33,6 @@ const studentloginSchema = new mongoose.Schema({
       type:String,
       required:true
     },
-    
-     
     });
 
     const studentCollection=new mongoose.model('studentloginCollection',studentloginSchema)

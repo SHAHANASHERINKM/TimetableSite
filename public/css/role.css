@@ -1,8 +1,8 @@
 /* Google Font Import */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
 
 /* Base Styles */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -17,9 +17,9 @@ body {
     justify-content: center;
     background-color: rgb(6, 33, 58);
     padding: 10px;
-}
+} */
 
-.container {
+/* .container {
     position: relative;
     max-width: 430px;
     width: 100%;
@@ -27,7 +27,19 @@ body {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-}
+} */
+ .login-form{
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin-top: 10rem;
+    margin-left: 31%;
+    margin-bottom: 5rem;
+ }
 .p{
     font-size: 200px;
 }

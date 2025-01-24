@@ -1,0 +1,873 @@
+
+
+/* Timetable Container */
+.timetable-container {
+position: relative;
+width: 90%;
+max-width: 700px;
+background: white;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+text-align: left;
+margin-top: 2rem;
+margin-left: 15rem; 
+}
+
+/* Show All Timetables Button */
+.all-timetable-btn {
+position: absolute;
+top: 15px;
+right: 15px;
+background-color: #4CAF50; /* Green button */
+color: white;
+border: none;
+padding: 10px 15px;
+font-size: 14px;
+font-weight: bold;
+border-radius: 5px;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+.all-timetable-btn a{
+text-decoration: none;
+color: #ddd;
+}
+.all-timetable-btn:hover {
+background-color: #45a049; /* Darker green */
+transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Timetable Box */
+.timetable-box h2 {
+margin-bottom: 15px;
+font-size: 24px;
+color: #333;
+}
+
+.student-timetable {
+width: 100%;
+border-collapse: collapse;
+}
+
+.student-timetable th, td {
+padding: 12px;
+text-align: center;
+border: 1px solid #ddd; /* Light border */
+}
+
+.student-timetable th {
+background-color: #4CAF50; /* Green header */
+color: white;
+font-weight: bold;
+}
+
+.student-timetable tr:nth-child(even) {
+background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+.student-timetable tr:hover {
+background-color: #f1f1f1; /* Highlight on hover */
+}
+
+/* General Reset */
+
+/* Container Styles */
+.table-container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 20px;
+background: white;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Table Styles */
+.table-responsive {
+overflow-x: auto; 
+}
+
+.student-all-timetable {
+width: 100%;
+border-collapse: collapse;
+margin: 0 auto;
+}
+
+.student-all-timetable th,
+.timetable td {
+border: 1px solid #ddd;
+padding: 10px;
+text-align: center;
+vertical-align: middle;
+font-size: 14px;
+} 
+
+.student-all-timetable th {
+background-color: #4CAF50;
+color: white;
+font-weight: bold;
+}
+
+.student-all-timetable tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+.student-all-timetable tr:hover {
+background-color: #f1f1f1;
+}
+
+.student-all-timetable td strong {
+color: #333;
+display: block;
+font-weight: bold;
+margin-bottom: px;
+}
+
+.student-all-timetable td em {
+font-style: italic;
+color: #666;
+font-size: 12px;
+}
+
+/* Responsive Design for Small Screens */
+ @media (max-width: 768px) {
+.timetable th, .timetable td {
+  font-size: 12px;
+  padding: 8px;
+}
+
+.table-h1 {
+  font-size: 18px;
+}
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+.timetable th, .timetable td {
+  font-size: 10px;
+  padding: 6px;
+}
+
+.table-h1 {
+  font-size: 16px;
+}
+
+.timetable td strong, .timetable td em {
+  font-size: 10px;
+}
+}
+
+
+.table-h1{
+text-align: center;
+margin-bottom: 20px;
+color: #4CAF50;
+font-size: 24px;
+}
+/* Table Styles */
+/* .table-responsive {
+overflow-x: auto; 
+}
+
+.timetable {
+width: 100%;
+border-collapse: collapse;
+margin: 0 auto;
+} */
+
+/* .timetable th,
+.timetable td {
+border: 1px solid #ddd;
+padding: 10px;
+text-align: center;
+vertical-align: middle;
+font-size: 14px;
+} */
+
+/* .timetable th {
+background-color: #4CAF50;
+color: white;
+font-weight: bold;
+} */
+
+/* .timetable tr:nth-child(even) {
+background-color: #f9f9f9;
+}
+
+.timetable tr:hover {
+background-color: #f1f1f1;
+} */
+
+/* .timetable td strong {
+color: #333;
+display: block;
+font-weight: bold;
+margin-bottom: 5px;
+} */
+
+/* .timetable td em {
+font-style: italic;
+color: #666;
+font-size: 12px;
+} */
+
+/* Responsive Design for Small Screens */
+/* @media (max-width: 768px) {
+.timetable th, .timetable td {
+  font-size: 12px;
+  padding: 8px;
+}
+
+.table-h1 {
+  font-size: 18px;
+}
+} */
+
+/* Extra Small Screens */
+/* @media (max-width: 480px) {
+.timetable th, .timetable td {
+  font-size: 10px;
+  padding: 6px;
+}
+
+.table-h1 {
+  font-size: 16px;
+}
+
+.timetable td strong, .timetable td em {
+  font-size: 10px;
+}
+} */
+
+/* General body styling */
+
+ .fac-h5 {
+  text-align: center;
+  margin: 20px 0;
+  color: #444;
+}
+
+/* h2 {
+  margin: 20px 0 10px;
+  color: #555;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  text-align: center;
+}  */
+
+/* Button styling */
+.view-all-btn {
+  width: 20%;
+  position:relative;
+  top: 20px;
+  right: 20px;
+  left: 2px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 14px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background-color: #45a049;
+}
+
+.fac-timetable {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.fac-timetable th, td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.fac-timetable th {
+  background-color: #4CAF50;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.fac-timetable td {
+  font-size: 14px;
+  color: #555;
+} 
+
+/* Alternating row colors */
+.fac-timetable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.fac-timetable tr:nth-child(odd) {
+  background-color: #fff;
+} 
+
+/* Hover effect on table rows */
+.fac-timetable tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Responsive table */
+ @media (max-width: 768px) {
+  .fac-timetable {
+    font-size: 12px;
+  }
+
+  .fac-timetable th, td {
+    padding: 8px;
+  }
+}
+
+.fac-form-group {
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center;
+  gap: 15px; 
+  margin-bottom: 20px;
+  flex-wrap: wrap; 
+}
+
+.fac-form-group label {
+  font-weight: bold;
+}
+
+.fac-form-group select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.fac-form-group button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  position: relative;
+  left: 15px;
+}
+
+.fac-form-group button:hover {
+  background-color: #45a049;
+}
+
+.fac-h2 {
+  color: #555;
+  margin-top: 20px;
+  margin: 20px 0 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.fac-all-timetable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.fac-all-timetable th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.fac-all-timetable th {
+  background-color: #4CAF50;
+  color: white;
+  text-transform: uppercase;
+}
+
+.fac-all-timetable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.fac-all-timetable tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  .fac-form-group {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  .fac-form-group select, .form-group button {
+    margin-bottom: 10px;
+  }
+
+  .fac-all-timetable {
+    font-size: 12px;
+  }
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.emailForm {
+  margin-top: 20px;
+}
+
+.email-form-group {
+  margin-bottom: 15px;
+}
+
+.emailForm label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.emailForm input[type="text"],
+.emailForm input[type="email"],
+.emailForm select,
+.emailForm textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.emailForm textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.form-row .email-form-group {
+  flex: 1;
+}
+
+.email-form-group button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.email-form-group button:hover {
+  background-color: #0056b3;
+}
+
+.email-form-group .success-message,
+.email-form-group .error-message {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.email-form-group .success-message {
+  color: #28a745;
+}
+
+.email-form-group .error-message {
+  color: #dc3545;
+} 
+
+/* Top-right "Send to All" button */
+.send-to-all-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #28a745;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.send-to-all-btn:hover {
+  background-color: #218838;
+} 
+
+/* style for hod time table */
+
+.selection-container {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.selection-container select {
+  padding: 8px;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.table-container {
+  width: 90%;
+  margin: 20px auto;
+  overflow-x: auto;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.hod-timetable th,
+td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+.hod-timetable th {
+  background-color: #062e58;
+  color: white;
+}
+
+.hod-timetable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.hod-timetable tr:hover {
+  background-color: #e9ecef;
+}
+
+.hod-edit-btn {
+  padding: 6px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-size: 12px;
+}
+.hod-edit-btn a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.view-time-table {
+background-color: #4CAF50; /* Green background */
+border: none; /* Remove border */
+color: white; /* White text */
+padding: 10px 20px; /* Padding */
+text-align: center; /* Center the text */
+text-decoration: none; /* Remove underline */
+display: inline-block; /* Inline-block layout */
+font-size: 14px; /* Text size */
+font-weight: bold; /* Bold text */
+border-radius: 8px; /* Rounded corners */
+transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+cursor: pointer; /* Pointer cursor on hover */
+margin: 0 10px;
+}
+
+.view-time-table:hover {
+background-color: #45a049; /* Darker green on hover */
+transform: scale(1.05); /* Slight zoom effect */
+}
+
+.view-time-table:active {
+background-color: #3e8e41; /* Even darker green when clicked */
+transform: scale(0.95); /* Slightly smaller on click */
+}       
+
+.hod-edit-btn:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 768px) {
+ .hod-timetable th,
+  .hod-timetable td {
+      font-size: 14px;
+      padding: 8px;
+  }
+}
+
+/* edit timetable for hod */
+.edit-form-container {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.edit-table th,
+.edit-table td {
+  padding: 12px;
+  border: 1px solid #dee2e6;
+  text-align: center;
+}
+
+.edit-table th {
+  background-color: #062e58;
+  color: white;
+}
+
+.edit-table td input,
+.edit-table td select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.edit-table td input:focus {
+  border-color: #80bdff;
+  outline: none;
+}
+.button-container {
+display: flex; 
+gap: 10px; 
+justify-content: center; 
+align-items: center; 
+margin-top: 20px; 
+}
+.button-container .save-button {
+   display: block;
+  width: 40%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+
+
+  margin-top: 20px;
+
+font-size: 16px;
+color: white;
+border: none;
+
+cursor: pointer;
+flex: 1; /* Optional: Makes buttons the same width */
+}
+
+
+
+.save-button:hover {
+  background-color: #218838;
+}
+.edit-container{
+  margin-top: 2rem;
+}
+.select-class-btn{
+  width: 100%;
+  padding: 12px 0;
+  margin-top: 20px;
+  background-color: rgb(6, 33, 58);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* add timetable table style.. */
+
+.error { color: red; font-size: 0.9em; }
+.add-form-container {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #343a40;
+}
+.add-button-container {
+display: flex; /* Enables flexbox layout */
+gap: 10px; /* Adds space between the buttons */
+justify-content: center; /* Centers the buttons horizontally */
+align-items: center; /* Ensures the buttons align vertically */
+margin-top: 20px; /* Optional: Adds space above the container */
+}
+.add-button-container .save-button {
+  display: block;
+  width: 40%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  flex: 1; /* Optional: Makes buttons the same width */
+}
+.add-button-container .save-button:hover {
+  background-color: #218838;
+}
+/* student details table style */
+.std-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+}
+.std-table th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+.std-table th {
+  background-color: #f4f4f4;
+}
+.std-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.std-table tr:hover {
+  background-color: #f1f1f1;
+}
+.std-action-buttons {
+  display: flex;
+  gap: 10px;
+}
+.std-action-buttons button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.std-edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+.std-edit-btn a{
+  text-decoration: none;
+  color: #fff;
+}
+.std-delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+.std-delete-btn a{
+  text-decoration: none;
+  color: #fff;
+}
+/* edit student detail form style */
+
+.edit-std-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.form-group button {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .edit-std-container {
+    width: 100%;
+    margin: 10px;
+  }
+}

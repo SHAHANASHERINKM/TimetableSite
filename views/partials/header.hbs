@@ -1,0 +1,85 @@
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <a class="navbar-brand" href="/">
+                        <strong><span>IT</span> Department</strong>
+                        <p>Kannur University, Mangattupramba</p>
+                    </a>
+                       
+                    <div class="d-lg-none">
+                        <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
+
+                        <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">Home</a>
+                            </li>
+                            {{#if usermode.isStudent}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/studentHome">Service</a>
+                            </li>
+                            {{else}}{{#if usermode.isFaculty}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/facultyHome">Service</a>
+                            </li>
+                            {{else}}{{#if usermode.isHOD}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/hodHome">Service</a>
+                            </li>
+                            {{else}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Service</a>
+                            </li>
+                            {{/if}}
+                            {{/if}}
+                            {{/if}}
+
+                            {{#if usermode.isStudent}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/studentprofile">Profile</a>
+                            </li>
+                            {{/if}}
+                            {{#if usermode.isFaculty}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/facultyProfile">Profile</a>
+                            </li>
+                            {{/if}}
+
+                            {{#if usermode.isLogin}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                            {{else}}
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Logout</a>
+                            </li>
+                            {{/if}}
+                        </ul>
+
+                        {{#if usermode.name}}
+                        <div class="d-none d-lg-block">
+                            <a href="/" class="me-3">{{usermode.name}}</a>
+                        </div>
+                        {{else}}
+                        <div class="d-none d-lg-block">
+                            <a href="/login" class="bi-person custom-icon me-3"></a>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </nav>

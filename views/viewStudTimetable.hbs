@@ -1,99 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daily Timetable</title>
-  <style>
-    /* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f9f9f9; /* Light gray background */
-  color: #333; /* Text color */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* Timetable Container */
-.timetable-container {
-  position: relative;
-  width: 90%;
-  max-width: 700px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  text-align: center;
-}
-
-/* Show All Timetables Button */
-.all-timetable-btn {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: #4CAF50; /* Green button */
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.all-timetable-btn a{
-  text-decoration: none;
-  color: #ddd;
-}
-.all-timetable-btn:hover {
-  background-color: #45a049; /* Darker green */
-  transform: scale(1.05); /* Slight zoom effect */
-}
-
-/* Timetable Box */
-.timetable-box h2 {
-  margin-bottom: 15px;
-  font-size: 24px;
-  color: #333;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th, td {
-  padding: 12px;
-  text-align: center;
-  border: 1px solid #ddd; /* Light border */
-}
-
-th {
-  background-color: #4CAF50; /* Green header */
-  color: white;
-  font-weight: bold;
-}
-
-tr:nth-child(even) {
-  background-color: #f9f9f9; /* Light gray for even rows */
-}
-
-tr:hover {
-  background-color: #f1f1f1; /* Highlight on hover */
-}
-
-  </style>
-</head>
-<body>
-  <!-- Container for the timetable -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+               <!-- Container for the timetable -->
   <div class="timetable-container">
     <!-- "Show All Day Timetable" Button -->
     <button class="all-timetable-btn"><a href="/show-all-day-timetable-student">Show All Day</a></button>
@@ -102,7 +11,7 @@ tr:hover {
     <div class="timetable-box">
       {{#if data}}
       <h2>Today's Timetable - {{data.day}}</h2>
-      <table>
+      <table class="student-timetable">
         <thead>
           <tr>
             <th>Period</th>
@@ -151,9 +60,30 @@ tr:hover {
         </tbody>
       </table>
       {{else}}
-      <h3 style="color:#FFB300;">Today's Timetabel Is Not Available</h3>
+      <h5 style="color:#FFB300;">Today's Timetabel Is Not Available</h5>
       {{/if}}
     </div>
   </div>
-</body>
-</html>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="front-product">
+    <div class="container-fluid p-0">
+        <div class="row align-items-center">
+
+        </div>
+    </div>
+</section>
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+           
+
+        </div>
+    </div>
+</section>
+
+</main> 

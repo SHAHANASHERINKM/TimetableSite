@@ -1,125 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Day Timetable Design</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
 
-    h1 {
-      text-align: center;
-      margin: 20px 0;
-      color: #444;
-    }
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+        
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
 
-    .form-group {
-      display: flex;
-      justify-content: flex-start; /* Align items inline */
-      align-items: center;
-      gap: 20px; /* Add space between form elements */
-      margin-bottom: 20px;
-      flex-wrap: wrap; /* Wrap on smaller screens */
-    }
-
-    .form-group label {
-      font-weight: bold;
-    }
-
-    .form-group select {
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 14px;
-    }
-
-    .form-group button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      text-transform: uppercase;
-      transition: background-color 0.3s;
-    }
-
-    .form-group button:hover {
-      background-color: #45a049;
-    }
-
-    h2 {
-      text-align: center;
-      color: #555;
-      margin-top: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      font-size: 14px;
-      text-align: left;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-    }
-
-    th {
-      background-color: #4CAF50;
-      color: white;
-      text-transform: uppercase;
-    }
-
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:hover {
-      background-color: #f1f1f1;
-    }
-
-    @media (max-width: 768px) {
-      .form-group {
-        flex-direction: column; /* Stack elements on smaller screens */
-        align-items: flex-start;
-      }
-
-      .form-group select, .form-group button {
-        margin-bottom: 10px;
-      }
-
-      table {
-        font-size: 12px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>All Day Timetable</h1>
-
-  <div class="container">
+  <div class="timetable-container" style="margin-top: 20px;">
+      <h5 class="fac-h5">All Day Timetable</h5>
     <!-- Form to select course and semester -->
-    <form action="/show-all-time-table-for-faculty" method="post" class="form-group">
+    <form action="/show-all-time-table-for-faculty" method="post" class="fac-form-group">
       <div>
         <label for="course">Course:</label>
         <select id="course" name="course">
@@ -140,9 +29,9 @@
     </form>
 
     <!-- Dynamic course heading -->
-    <h2>Timetable for {{data.course}}</h2>
+    <h2 class="fac-h2">Timetable for {{data.course}}</h2>
     <!-- Table design for timetable -->
-    <table>
+    <table class="fac-all-timetable">
       <thead>
         <tr>
           <th>Day</th>
@@ -187,5 +76,25 @@
       </tbody>
     </table>
   </div>
-</body>
-</html>
+
+        </div>
+    </div>
+</section>
+
+<section class="front-product">
+    <div class="container-fluid p-0">
+        <div class="row align-items-center">
+
+        </div>
+    </div>
+</section>
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+           
+
+        </div>
+    </div>
+</section>
+</main>

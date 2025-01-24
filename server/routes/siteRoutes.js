@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const siteControllers = require('../controllers/siteController');
 
-router.get('/', siteControllers.login);
+router.get('/', siteControllers.Home);
 router.get('/role', siteControllers.role);
 router.get('/signup', siteControllers.signup);
 router.get('/login', siteControllers.login);
@@ -26,7 +26,7 @@ router.get("/delete-student/:id",siteControllers.deleteStudent)
 router.get("/delete-faculty/:id",siteControllers.deleteFaculty)
 router.get('/edit-student-details/:id',siteControllers.editStudentDetails)
 router.get("/edit-faculty/:id",siteControllers.editFaculty)
-
+router.get("/send-informations",siteControllers.sendInformations)
 
 
 //router.get('/edit-timetable',siteControllers.editTimeTable)
@@ -43,6 +43,8 @@ router.post('/saveeditedtimetable/:id',siteControllers.saveEditedTimetable)
 router.post("/show-all-time-table-for-faculty",siteControllers.postAlldayTimeTable)
 router.post("/edit-student-details/:id",siteControllers.saveEditedStudentDetails)
 router.post("/edit-faculty-details/:id",siteControllers.saveEditedFacultyDetails)
+router.post("/send-informations",siteControllers.sendinginformationMail)
+router.post("/send-mail-to-all",siteControllers.sendinginformationMailToAll)
 //router.get('/view-time-table',siteControllers.viewTimeTable)
 //router.post('/submitClassSelected',siteControllers.submitClassSelected)
 

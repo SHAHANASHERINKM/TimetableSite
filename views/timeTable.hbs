@@ -1,203 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-        }
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+          <div class="home-container">
 
-        h1 {
-            text-align: center;
-            margin-top: 20px;
-            color: #343a40;
-        }
-
-        .selection-container {
-            width: 90%;
-            margin: 20px auto;
-            text-align: center;
-        }
-
-        .selection-container select {
-            padding: 8px;
-            font-size: 16px;
-            margin: 10px;
-        }
-
-        .table-container {
-            width: 90%;
-            margin: 20px auto;
-            overflow-x: auto;
-            background-color: #fff;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-
-        th {
-            background-color: #062e58;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        tr:hover {
-            background-color: #e9ecef;
-        }
-
-        .btn {
-            padding: 6px 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-size: 12px;
-        }
-        .btn a{
-            text-decoration: none;
-            color: #fff;
-        }
- 
-       .view-time-table {
-         background-color: #4CAF50; /* Green background */
-         border: none; /* Remove border */
-         color: white; /* White text */
-         padding: 10px 20px; /* Padding */
-         text-align: center; /* Center the text */
-         text-decoration: none; /* Remove underline */
-         display: inline-block; /* Inline-block layout */
-         font-size: 14px; /* Text size */
-         font-weight: bold; /* Bold text */
-         border-radius: 8px; /* Rounded corners */
-         transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-         cursor: pointer; /* Pointer cursor on hover */
-         margin: 0 10px;
-       }
-
-       .view-time-table:hover {
-         background-color: #45a049; /* Darker green on hover */
-         transform: scale(1.05); /* Slight zoom effect */
-       }
-
-       .view-time-table:active {
-         background-color: #3e8e41; /* Even darker green when clicked */
-         transform: scale(0.95); /* Slightly smaller on click */
-        }       
-
-        .btn:hover {
-            background-color: #218838;
-        }
-
-        @media (max-width: 768px) {
-            th,
-            td {
-                font-size: 14px;
-                padding: 8px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-    <h1>{{course}} {{semester}} Timetable</h1>
-    <form action="/displayTimeTable" method="post">
-    <div class="selection-container">
-        <label for="course">Select Course:</label>
-        <select name="course" id="course">
-            <option value="">--Select Course--</option>
-            <option   value="MCA">MCA</option>
-            <option value="MSC">MSC</option>
-        </select>
-        <label for="semester">Select Semester:</label>
-        <select name="semester" id="semester">
-            <option value="">--Select Semester--</option>
-            <option value="S1">Semester 1</option>
-            <option value="S2">Semester 2</option>
-            <option value="S3">Semester 3</option>
-            <option value="S4">Semester 4</option>
-        </select>
-         <button type="submit" class="view-time-table"><a>view Time Table</a></button>
+            <h1 class="fac-h2">{{course}} {{semester}} Timetable</h1>
+            <form action="/displayTimeTable" method="post">
+            <div class="selection-container">
+                <label for="course">Select Course:</label>
+                <select name="course" id="course">
+                    <option value="">--Select Course--</option>
+                    <option   value="MCA">MCA</option>
+                    <option value="MSC">MSC</option>
+                </select>
+                <label for="semester">Select Semester:</label>
+                <select name="semester" id="semester">
+                    <option value="">--Select Semester--</option>
+                    <option value="S1">Semester 1</option>
+                    <option value="S2">Semester 2</option>
+                    <option value="S3">Semester 3</option>
+                    <option value="S4">Semester 4</option>
+                </select>
+                 <button type="submit" class="view-time-table"><a>view Time Table</a></button>
+            </div>
+           
+            </form>
+        
+            <!-- Timetable -->
+            <div class="table-container" id="timetable">
+                <table class="hod-timetable">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Subject</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Tutor</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
+                        <tr>
+                            <td rowspan="5">{{day}}</td>
+                            <td>{{firstPeriod.0.subject}} </td>
+                            <td>{{firstPeriod.0.startingTime}}</td>
+                            <td>{{firstPeriod.0.endingTime}}</td>
+                            <td>{{firstPeriod.0.tutor}}</td>
+                            <td rowspan="5">
+                                <button class="hod-edit-btn"><a href="/edit-timetable/{{this._id}}">Edit</a></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{secondPeriod.0.subject}}</td>
+                            <td>{{secondPeriod.0.startingTime}}</td>
+                            <td>{{secondPeriod.0.endingTime}}</td>
+                            <td>{{secondPeriod.0.tutor}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{thirdPeriod.0.subject}}</td>
+                            <td>{{thirdPeriod.0.startingTime}}</td>
+                            <td>{{thirdPeriod.0.endingTime}}</td>
+                            <td>{{thirdPeriod.0.tutor}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{fourthPeriod.0.subject}}</td>
+                            <td>{{fourthPeriod.0.startingTime}}</td>
+                            <td>{{fourthPeriod.0.endingTime}}</td>
+                            <td>{{fourthPeriod.0.tutor}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{fifthPeriod.0.subject}}</td>
+                            <td>{{fifthPeriod.0.startingTime}}</td>
+                            <td>{{fifthPeriod.0.endingTime}}</td>
+                            <td>{{fifthPeriod.0.tutor}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
     </div>
-   
-    </form>
+</section>
 
-    <!-- Timetable -->
-    <div class="table-container" id="timetable">
-        <table>
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Subject</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Tutor</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each data}}
-                <tr>
-                    <td rowspan="5">{{day}}</td>
-                    <td>{{firstPeriod.0.subject}} </td>
-                    <td>{{firstPeriod.0.startingTime}}</td>
-                    <td>{{firstPeriod.0.endingTime}}</td>
-                    <td>{{firstPeriod.0.tutor}}</td>
-                    <td rowspan="5">
-                        <button class="btn"><a href="/edit-timetable/{{this._id}}">Edit</a></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>{{secondPeriod.0.subject}}</td>
-                    <td>{{secondPeriod.0.startingTime}}</td>
-                    <td>{{secondPeriod.0.endingTime}}</td>
-                    <td>{{secondPeriod.0.tutor}}</td>
-                </tr>
-                <tr>
-                    <td>{{thirdPeriod.0.subject}}</td>
-                    <td>{{thirdPeriod.0.startingTime}}</td>
-                    <td>{{thirdPeriod.0.endingTime}}</td>
-                    <td>{{thirdPeriod.0.tutor}}</td>
-                </tr>
-                <tr>
-                    <td>{{fourthPeriod.0.subject}}</td>
-                    <td>{{fourthPeriod.0.startingTime}}</td>
-                    <td>{{fourthPeriod.0.endingTime}}</td>
-                    <td>{{fourthPeriod.0.tutor}}</td>
-                </tr>
-                <tr>
-                    <td>{{fifthPeriod.0.subject}}</td>
-                    <td>{{fifthPeriod.0.startingTime}}</td>
-                    <td>{{fifthPeriod.0.endingTime}}</td>
-                    <td>{{fifthPeriod.0.tutor}}</td>
-                </tr>
-            {{/each}}
-            </tbody>
-        </table>
+<section class="front-product">
+    <div class="container-fluid p-0">
+        <div class="row align-items-center">
+
+        </div>
     </div>
-</body>
+</section>
 
-</html>
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+           
+
+        </div>
+    </div>
+</section>
+</main>

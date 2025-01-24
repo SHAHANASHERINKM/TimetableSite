@@ -1,0 +1,129 @@
+
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+           
+  <div class="form-container">
+    <!-- Send to All Button -->
+    <a href="#" id="sendToAllBtn" class="send-to-all-btn">Send to All</a>
+    <h2 class="fac-h2">Send Email to Students</h2>
+    <form class="emailForm" action="/send-informations" method="post">
+      <!-- Course and Semester Selection in One Row -->
+      <div class="form-row">
+        <!-- Course Selection -->
+        <div class="email-form-group">
+          <label for="course">Select Course</label>
+          <select id="course" name="course">
+            <option value="" disabled selected>Select a course</option>
+            <option value="BCA">BCA</option>
+            <option value="MCA">MCA</option>
+            <option value="BSc Computer Science">BSc Computer Science</option>
+            <option value="MSc Computer Science">MSc Computer Science</option>
+          </select>
+        </div>
+
+        <!-- Semester Selection -->
+        <div class="email-form-group">
+          <label for="semester">Select Semester</label>
+          <select id="semester" name="semester">
+            <option value="" disabled selected>Select a semester</option>
+            <option value="S1">Semester 1</option>
+            <option value="S2">Semester 2</option>
+            <option value="S3">Semester 3</option>
+            <option value="S4">Semester 4</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <div class="email-form-group">
+        <label for="emailSubject">Subject</label>
+        <input type="text" id="emailSubject" name="emailSubject" placeholder="Enter email subject" required>
+      </div>
+
+      <!-- Message -->
+      <div class="email-form-group">
+        <label for="emailMessage">Message</label>
+        <textarea id="emailMessage" name="emailMessage" rows="5" placeholder="Enter your message" required></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="email-form-group">
+        <button type="submit">Send Email</button>
+      </div>
+
+      <!-- Success/Error Messages -->
+      <div class="email-form-group">
+        <p class="success-message" id="successMessage" style="display: none;">Email sent successfully!</p>
+        <p class="error-message" id="errorMessage" style="display: none;">Failed to send the email. Please try again.</p>
+      </div>
+    </form>
+  </div>
+        </div>
+    </div>
+</section>
+
+<section class="front-product">
+    <div class="container-fluid p-0">
+        <div class="row align-items-center">
+
+        </div>
+    </div>
+</section>
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
+           
+
+        </div>
+    </div>
+</section>
+</main>
+<script>
+  document.getElementById("sendToAllBtn").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default action of the link
+
+    const emailSubject = document.getElementById("emailSubject").value;
+    const emailMessage = document.getElementById("emailMessage").value;
+
+    // Validation to ensure no empty fields
+    if (!course || !semester ) {
+      alert("Please fill in all the fields before sending!");
+      return;
+    }
+
+    // Prepare the data to send
+    const requestData = {
+      subject: emailSubject,
+      message: emailMessage,
+      sendToAll: true // Indicate this is for all students
+    };
+
+    // Send the data to the backend
+    fetch("/send-mail-to-all", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(requestData)
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Show success message
+          document.getElementById("successMessage").style.display = "block";
+          document.getElementById("errorMessage").style.display = "none";
+        } else {
+          // Show error message
+          document.getElementById("successMessage").style.display = "none";
+          document.getElementById("errorMessage").style.display = "block";
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending email:", error);
+        // Show error message
+        document.getElementById("successMessage").style.display = "none";
+        document.getElementById("errorMessage").style.display = "block";
+      });
+  });
+</script>

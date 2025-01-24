@@ -1,87 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--css-->
-     <link rel="stylesheet" href="/css/loginsignup.css">
-    <title>Login Form</title>
-    <style>
-    .error { color: red; font-size: 0.9em; }
-  </style>
- 
-
-</head>
-<body>
-
+  </head>
+  <body>
+   <style>
+      .error { color: red; font-size: 0.9em; }
+    </style>
     <div class="container">
+      <div class="login-form">
         <div class="forms">
-            <div class="form login">
-                <span class="title">Login</span>
+          <div class="form login">
+            <span class="title">Login</span>
 
-               <form id="loginForm" action="/login" method="post">
-    <div class="input-field">
-        <input type="text" name="username" id="username" placeholder="Username" value="{{username}}">
-        {{#if errors.username}}
-            <div class="error">{{errors.username}}</div>
-        {{/if}}  
-    </div>  
+            <form id="loginForm" action="/login" method="post">
+              <div class="input-field">
+                <input
+                  type="text"
+                  name="username"
+                  id="username"
+                  placeholder="Username"
+                  value="{{username}}"
+                />
+                {{#if errors.username}}
+                  <div class="login-error">{{errors.username}}</div>
+                {{/if}}
+              </div>
 
-    <div class="input-field">
-        <input type="password" id="password" name="password" placeholder="Password" value="{{password}}">
-        {{#if errors.password}}
-            <div class="error">{{errors.password}}</div>
-        {{/if}}
-    </div>  
+              <div class="input-field">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  value="{{password}}"
+                />
+                {{#if errors.password}}
+                  <div class="login-error">{{errors.password}}</div>
+                {{/if}}
+              </div>
+              <!-- Role -->
+              <div class="input-field">
+                <div class="p">
+                  <p style="margin-bottom: 0;font-size:15px">Role</p>
+                </div>
+                <div class="options">
+                  <select name="usertype" id="userType" class="option">
+                    <option value=""></option>
+                    <option value="Student">Student</option>
+                    <option value="Faculty">Faculty</option>
+                    <option value="HOD">HOD</option>
+                  </select>
+                  {{#if errors.usertype}}
+                    <div class="login-error">{{errors.usertype}}</div>
+                  {{/if}}
+                </div>
+              </div>
 
-    <!-- Academic Year -->
-    <div class="input-field">
-        <div class="p"> 
-            <p id="year">Academic Year</p>
+              <!-- Button -->
+              <button class="button" type="submit">Login</button>
+              <p class="register-link">Not registered yet?
+                <a href="/role">Register Now</a></p>
+            </form>
+
+          </div>
         </div>
-        <div class="options">
-            <select name="yeartype" id="yeartype" class="option">
-              <option value=""></option>
-                                <option value="2020-21">2020-21</option>
-                                <option value="2021-22">2021-22</option>
-                                <option value="2022-23">2022-23</option>
-                                <option value="2023-24">2023-24</option>
-                                <option value="2024-25">2024-25</option>
-                        </select>
-            {{#if errors.yeartype}}
-                <div class="error">{{errors.yeartype}}</div>
-            {{/if}}
-        </div>
+      </div>
     </div>
-
-    <!-- Role -->
-    <div class="input-field">
-        <div class="p"> 
-            <p>Role</p>
-        </div>
-        <div class="options">
-            <select name="usertype" id="userType" class="option">
-                                <option value=""></option>
-                                <option value="Student">Student</option>
-                                <option value="Faculty">Faculty</option>
-                                <option value="HOD">HOD</option>
-                            </select>
-            {{#if errors.usertype}}
-                <div class="error">{{errors.usertype}}</div>
-            {{/if}}
-        </div>
-    </div>
-
-    <!-- Button -->
-    <button class="button" type="submit">Login</button>
-    <p class="register-link">Not registered yet? <a href="/role">Register Now</a></p>
-</form>
-
-            </div>
-        </div>
-    </div>
-
-  <!--<script src="/login.js"></script>  -->
-    
-</body>
-</html>

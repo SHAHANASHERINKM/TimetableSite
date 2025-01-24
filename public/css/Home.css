@@ -1,4 +1,13 @@
-.navbar{
+/* .btncontent a{
+  text-decoration: none;
+  color: #fff;
+} */
+/* .btncontent:hover {
+background-color:#563d7c;
+border:1px solid #563d7c;
+} */
+
+/* .navbar{
     padding:.8rem;
     background-color: #0b2e56;
     
@@ -11,17 +20,20 @@
     color: white !important;
   }
   .navbar-toggler {
-    background-color: white; /* Background color */
-    border: 1px solid white; /* Border color */
-  }
-  .navbar-toggler-icon {
+    background-color: white; 
+    border: 1px solid white; 
+  } */
+  /* .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-    /* White icon for the toggler */
+   
   }
   .navbar-brand{
     color: white;
-  }
+  } */
   
+  .home-container{
+    margin-top:3rem ;
+  }
   
   .welcome{
   
@@ -38,7 +50,7 @@
   .justify-content-center{
     width:100%;
   }
- 
+  
   
   /*---Media Queries --*/
   @media (max-width: 992px) {

@@ -1,70 +1,54 @@
+<section class="about section-padding">
+  <div class="container">
+    <div class="row">
+        <div class="login-form">
+          <div class="form login">
+            <span class="fac-h2">Choose Course And Semester</span>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--css-->
-    <link rel="stylesheet" href="/css/role.css">
-    <title>Login Form</title>
-
-</head>
-<body>
-
-    <div class="container">
-        <div class="forms">
-            <div class="form login">
-                <span class="title">Choose Course And Semester</span>
-
-        <form id="loginForms" action="/addTimeTable" method="post"> 
-                <!--role-->
-        <div class="input-field">
-        <div class="p"> 
-            <p>Course</p>
-        </div>
-        <div class="options">
-            <select name="course" id="course" class="option">
-                                <option value=""></option>
-                                <option value="MCA">MCA</option>
-                                <option value="MSC">MSC</option>
-                               
-                            </select>
-          <!--  {{#if errors.usertype}}
-                <div class="error">{{errors.usertype}}</div>
-            {{/if}}
-            -->
-        </div>
-        <div class="p"> 
-            <p>Semester</p>
-        </div>
-        <div class="options">
-            <select name="semester" id="semester" class="option">
-                                <option value=""></option>
-                                <option value="S1">S1</option>
-                                <option value="S2">S2</option>
-                                <option value="S3">S3</option>
-                                <option value="S4">S4</option>
-
-                            </select>
-          <!--  {{#if errors.usertype}}
-                <div class="error">{{errors.usertype}}</div>
-            {{/if}}
-            -->
+            <form id="loginForms" action="/addTimeTable" method="post">
+              <!--role-->
+              <div class="input-field">
+                <div class="p">
+                  <p style="margin-bottom: 0;font-size:16px;">Course</p>
+                </div>
+                <div class="options">
+                  <select name="course" id="course" class="option">
+                    <option value=""></option>
+                    <option value="MCA">MCA</option>
+                    <option value="MSC">MSC</option>
+                  </select>
+                </div>
+                <div class="p">
+                  <p style="margin-bottom: 0;font-size:16px;">Semester</p>
+                </div>
+                <div class="options">
+                  <select name="semester" id="semester" class="option">
+                    <option value=""></option>
+                    <option value="S1">S1</option>
+                    <option value="S2">S2</option>
+                    <option value="S3">S3</option>
+                    <option value="S4">S4</option>
+                  </select>
+                </div>
+              </div>
+              <!--button-->
+              <button class="select-class-btn" type="submit">Next</button>
+            </form>
+          </div>
         </div>
     </div>
+  </div>
+</section>
 
+<section class="front-product">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center"></div>
+  </div>
+</section>
 
-
-
-<!--button-->
- <button type="submit">Next</button>
-
-
-</form>
-            </div>
-        </div>
-    </div>
-    
-    
-</body>
-</html>
+<section class="featured-product section-padding">
+  <div class="container">
+    <div class="row"></div>
+  </div>
+</section>
+</main>

@@ -1,246 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timetable Form</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 0;
-            padding: 0;
-        }
-.error { color: red; font-size: 0.9em; }
-        .form-container {
-            max-width: 800px;
-            margin: 30px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #343a40;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            border: 1px solid #dee2e6;
-            text-align: center;
-        }
-
-        th {
-            background-color: #062e58;
-            color: white;
-        }
-
-        td input,
-        td select {
-            width: 90%;
-            padding: 8px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-
-        td input:focus {
-            border-color: #80bdff;
-            outline: none;
-        }
-        .button-container {
-    display: flex; /* Enables flexbox layout */
-    gap: 10px; /* Adds space between the buttons */
-    justify-content: center; /* Centers the buttons horizontally */
-    align-items: center; /* Ensures the buttons align vertically */
-    margin-top: 20px; /* Optional: Adds space above the container */
-}
-        .button-container .save-button {
-             display: block;
-            width: 40%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            padding: 10px;
-    
-    
-            margin-top: 20px;
-    
-    font-size: 16px;
-    color: white;
-    border: none;
-   
-    cursor: pointer;
-    flex: 1; /* Optional: Makes buttons the same width */
-}
-
-        
-
-        .save-button:hover {
-            background-color: #218838;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="form-container">
-        <h2>Timetable Form</h2>
-
-        <hr>
-        {{#if errors.day}}
-                <div class="error">{{errors.day}}</div>
-            {{/if}}
-        <p>Course:{{course}}</p>
-        <p>Semester:{{semester}} </p>
-        <form id="timetableForm" action="/save-timetable" method="post">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Subject</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
-                        <th>Tutor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Row for the Day -->
-                    <tr>
-                        <td rowspan="5">
-                            <select id="day" name="day" >
-                                <option value="">Select Day</option>
-                                <option value="Monday">Monday</option>
-                                <option value="Tuesday">Tuesday</option>
-                                <option value="Wednesday">Wednesday</option>
-                                <option value="Thursday">Thursday</option>
-                                <option value="Friday">Friday</option>
-                            </select>
-                        </td>
-                        <!-- First Row for Subject -->
-                        <td><input type="text" name="subject1" placeholder="Enter Subject" ></td>
-                        <td><input type="time" name="startTime1" ></td>
-                        <td><input type="time" name="endTime1" ></td>
-                        <td>
-                            <select id="tutor" name="tutor1" >
-                                <option value="">Select Tutor</option>
-                                {{#each tutors}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/each}}
-                            </select> 
-                        </td>
-                    </tr>
-                    <!-- Second Row for Subject -->
-                    <tr>
-                        <td><input type="text" name="subject2" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime2"></td>
-                        <td><input type="time" name="endTime2"></td>
-                        <td>
-                            <select id="tutor" name="tutor2" >
-                                <option value="">Select Tutor</option>
-                                {{#each tutors}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/each}}
-                            </select> 
-                        </td>
-                    </tr>
-                    <!-- Third Row for Subject -->
-                    <tr>
-                        <td><input type="text" name="subject3" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime3"></td>
-                        <td><input type="time" name="endTime3"></td>
-                        <td>
-                            <select id="tutor" name="tutor3" >
-                                <option value="">Select Tutor</option>
-                                {{#each tutors}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/each}}
-                            </select> 
-                        </td>
-                    </tr>
-                    <!-- Fourth Row for Subject -->
-                    <tr>
-                        <td><input type="text" name="subject4" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime4"></td>
-                        <td><input type="time" name="endTime4"></td>
-                        <td>
-                            <select id="tutor" name="tutor4" >
-                                <option value="">Select Tutor</option>
-                                {{#each tutors}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/each}}
-                            </select> 
-                        </td>
-                    </tr>
-                    <!-- fifth Row for Subject -->
-                    <tr>
-                        <td><input type="text" name="subject5" placeholder="Enter Subject"></td>
-                        <td><input type="time" name="startTime5"></td>
-                        <td><input type="time" name="endTime5"></td>
-                        <td>
-                            <select id="tutor" name="tutor5" >
-                                <option value="">Select Tutor</option>
-                                {{#each tutors}}
-                                <option value="{{name}}">{{name}}</option>
-                                {{/each}}
-                            </select> 
-                        </td>
-                    </tr>
-                </tbody>
+<section class="about section-padding">
+  <div class="container">
+    <div class="row">
+      {{!-- <div class="home-container"> --}}
+        <div class="add-form-container">
+          <h2 class="fac-h2">Timetable Form</h2>
+          {{#if errors.day}}
+          <div class="error">{{errors.day}}</div>
+          {{/if}}
+          <p style="margin-bottom: 0;font-size:15px;">Course:{{course}}</p>
+          <p style="font-size:15px;">Semester:{{semester}}</p>
+          <form id="timetableForm" action="/save-timetable" method="post">
+            <table class="edit-table">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Subject</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Tutor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Row for the Day -->
+                <tr>
+                  <td rowspan="5">
+                    <select id="day" name="day">
+                      <option value="">Select Day</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                    </select>
+                  </td>
+                  <!-- First Row for Subject -->
+                  <td>
+                    <input
+                      type="text"
+                      name="subject1"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                  <td><input type="time" name="startTime1" /></td>
+                  <td><input type="time" name="endTime1" /></td>
+                  <td>
+                    <select id="tutor" name="tutor1">
+                      <option value="">Select Tutor</option>
+                      {{#each tutors}}
+                      <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </td>
+                </tr>
+                <!-- Second Row for Subject -->
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      name="subject2"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                  <td><input type="time" name="startTime2" /></td>
+                  <td><input type="time" name="endTime2" /></td>
+                  <td>
+                    <select id="tutor" name="tutor2">
+                      <option value="">Select Tutor</option>
+                      {{#each tutors}}
+                      <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </td>
+                </tr>
+                <!-- Third Row for Subject -->
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      name="subject3"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                  <td><input type="time" name="startTime3" /></td>
+                  <td><input type="time" name="endTime3" /></td>
+                  <td>
+                    <select id="tutor" name="tutor3">
+                      <option value="">Select Tutor</option>
+                      {{#each tutors}}
+                      <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </td>
+                </tr>
+                <!-- Fourth Row for Subject -->
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      name="subject4"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                  <td><input type="time" name="startTime4" /></td>
+                  <td><input type="time" name="endTime4" /></td>
+                  <td>
+                    <select id="tutor" name="tutor4">
+                      <option value="">Select Tutor</option>
+                      {{#each tutors}}
+                      <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </td>
+                </tr>
+                <!-- fifth Row for Subject -->
+                <tr>
+                  <td>
+                    <input
+                      type="text"
+                      name="subject5"
+                      placeholder="Enter Subject"
+                    />
+                  </td>
+                  <td><input type="time" name="startTime5" /></td>
+                  <td><input type="time" name="endTime5" /></td>
+                  <td>
+                    <select id="tutor" name="tutor5">
+                      <option value="">Select Tutor</option>
+                      {{#each tutors}}
+                      <option value="{{name}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
             </table>
 
             <!-- Save Button -->
-            <div  class="button-container">
-                       <button type="submit" class="save-button" name="action" value="save">Save and Next</button>
-                       <button type="submit" class="save-button" name="action" value="submit">Submit</button>
-             </div>
-        </form>
+            <div class="add-button-container">
+              <button
+                type="submit"
+                class="save-button"
+                name="action"
+                value="save"
+              >
+                Save and Next
+              </button>
+              <button
+                type="submit"
+                class="save-button"
+                name="action"
+                value="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      {{!-- </div> --}}
     </div>
+  </div>
+</section>
 
-   <!-- <script>
+<section class="front-product">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center"></div>
+  </div>
+</section>
 
-           
-        function saveTimetable() {
-            const form = document.getElementById('timetableForm');
-            const formData = new FormData(form);
-
-            // Convert form data to JSON
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            // Send data to server
-            fetch('/save-timetable', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-                .then(response => response.json())
-                .then(result => {
-                    alert('Timetable saved successfully!');
-                    console.log('Result:', result);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to save timetable.');
-                });
-        }
-    </script>  -->
-</body>
-
-</html>
+<section class="featured-product section-padding">
+  <div class="container">
+    <div class="row"></div>
+  </div>
+</section>
+</main>

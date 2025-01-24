@@ -1,123 +1,13 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tutor's Schedule</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f8f9fa;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    table {
-      width: 80%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px 16px;
-      text-align: center;
-    }
-    th {
-      background-color: #007bff;
-      color: white;
-      font-weight: bold;
-    }
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-    tr:hover {
-      background-color: #d1ecf1;
-      cursor: pointer;
-    }
-    td {
-      color: #333;
-    }
-    caption {
-      margin-bottom: 10px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #555;
-    }
-  </style>
-</head>
-<body>
 
-  <h1>Current Day Schedule</h1>
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+           <div class="timetable-container">
+ <button class="all-timetable-btn" style="margin-top: rem;" onclick="window.location.href='/all-timetables-for-faculty';">View All Day</button>
 
-  <!-- Table -->
-  {{#each data}}
-  <table>
-    <caption>Today's Periods</caption>
-    <h2>{{Course}}</h2>
-    <thead>
-      <tr>
-        <th>Period</th>
-        <th>Time</th>
-        <th>Course</th>
-        <th>Subject</th>
-      </tr>
-    </thead>
-    <tbody id="scheduleTable">
-      <!-- Rows will be dynamically added here -->
-      {{#each Periods}}
-        {{#if this}}
-          {{#each this}}
-            <tr>
-             <td>{{@../key}}</td>
-             <td>{{subject}}-{{this.0.endingTime}}</td>
-             <td>{{subject}}</td>
-             <td>{{tutor}}</td>
-            </tr>
-         {{/each}}
-       {{/if}}
-      {{/each}}
-    </tbody>
-  </table>
-  {{/each}}
-</body>
-</html> --}}
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timetables</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 16px;
-      text-align: left;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    th {
-      background-color: #f4f4f4;
-    }
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-  </style>
-</head>
-<body>
-  <h1>Timetables for Monday</h1>
-
-  {{#each data}}
-    <h2>{{course}}</h2>
-    <table>
+  <h5 class="fac-h5">Timetables for {{day}}</h5>
+     
+    <table class="fac-timetable">
       <thead>
         <tr>
           <th>Period</th>
@@ -125,326 +15,49 @@
           <th>Tutor</th>
           <th>Starting Time</th>
           <th>Ending Time</th>
+          <th>Course</th> <!-- Add Course column -->
         </tr>
       </thead>
       <tbody>
+        {{#each data}}
         {{#each periods}}
-         {{#unless _id}}
-          {{#if this}}
-            {{#each this}}
-            
-              <tr>
-                <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
-                <td>{{this.subject}}</td>
-                <td>{{this.tutor}}</td>
-                <td>{{this.startingTime}}</td>
-                <td>{{this.endingTime}}</td>
-              </tr>
+          {{#unless _id}}
+            {{#if this}}
+              {{#each this}}
+                <tr>
+                  <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
+                  <td>{{this.subject}}</td>
+                  <td>{{this.tutor}}</td>
+                  <td>{{this.startingTime}}</td>
+                  <td>{{this.endingTime}}</td>
+                  <td>{{this.course}}</td> <!-- Add Course field -->
+                </tr>
+              {{/each}}
+            {{/if}}
+          {{/unless}}
+        {{/each}}
+       {{/each}}
+      </tbody>
+    </table>
+           </div>
+        </div>
+    </div>
+</section>
+
+<section class="front-product">
+    <div class="container-fluid p-0">
+        <div class="row align-items-center">
+
+        </div>
+    </div>
+</section>
+
+<section class="featured-product section-padding">
+    <div class="container">
+        <div class="row">
            
-            {{/each}}
-          {{/if}}
-          {{/unless}}
-        {{/each}}
-      </tbody>
-    </table>
-  {{/each}}
-</body>
-</html> --}}
 
-{{!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timetables</title>
-  <style>
-    /* General body styling */
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 20px 0;
-      color: #444;
-    }
-
-    h2 {
-      margin: 20px 0 10px;
-      color: #555;
-      font-size: 20px;
-      text-transform: uppercase;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      text-align: center;
-    }
-
-    table {
-      width: 100%;
-      max-width: 1200px;
-      margin: 20px auto;
-      border-collapse: collapse;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px 15px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #4CAF50;
-      color: white;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    td {
-      font-size: 14px;
-      color: #555;
-    }
-
-    /* Alternating row colors */
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:nth-child(odd) {
-      background-color: #fff;
-    }
-
-    /* Hover effect on table rows */
-    tr:hover {
-      background-color: #f1f1f1;
-      cursor: pointer;
-    }
-
-    /* Responsive table */
-    @media (max-width: 768px) {
-      table {
-        font-size: 12px;
-      }
-
-      th, td {
-        padding: 8px;
-      }
-
-      h1 {
-        font-size: 22px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <h1>Timetables for Monday</h1>
-
-  {{#each data}}
-    <h2>{{course}}</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Period</th>
-          <th>Subject</th>
-          <th>Tutor</th>
-          <th>Starting Time</th>
-          <th>Ending Time</th>
-          <th>Course</th> <!-- Add Course column -->
-        </tr>
-      </thead>
-      <tbody>
-        {{#each periods}}
-          {{#unless _id}}
-            {{#if this}}
-              {{#each this}}
-                <tr>
-                  <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
-                  <td>{{this.subject}}</td>
-                  <td>{{this.tutor}}</td>
-                  <td>{{this.startingTime}}</td>
-                  <td>{{this.endingTime}}</td>
-                  <td>{{this.course}}</td> <!-- Add Course field -->
-                </tr>
-              {{/each}}
-            {{/if}}
-          {{/unless}}
-        {{/each}}
-      </tbody>
-    </table>
-  {{/each}}
-</body>
-</html> --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timetables</title>
-  <style>
-    /* General body styling */
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      margin: 20px 0;
-      color: #444;
-    }
-
-    h2 {
-      margin: 20px 0 10px;
-      color: #555;
-      font-size: 20px;
-      text-transform: uppercase;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      text-align: center;
-    }
-
-    /* Button styling */
-    .view-all-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-size: 14px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
-    }
-
-    .view-all-btn:hover {
-      background-color: #45a049;
-    }
-
-    table {
-      width: 100%;
-      max-width: 1200px;
-      margin: 20px auto;
-      border-collapse: collapse;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      background-color: #fff;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 12px 15px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #4CAF50;
-      color: white;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-    }
-
-    td {
-      font-size: 14px;
-      color: #555;
-    }
-
-    /* Alternating row colors */
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    tr:nth-child(odd) {
-      background-color: #fff;
-    }
-
-    /* Hover effect on table rows */
-    tr:hover {
-      background-color: #f1f1f1;
-      cursor: pointer;
-    }
-
-    /* Responsive table */
-    @media (max-width: 768px) {
-      table {
-        font-size: 12px;
-      }
-
-      th, td {
-        padding: 8px;
-      }
-
-      h1 {
-        font-size: 22px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      .view-all-btn {
-        font-size: 12px;
-        padding: 8px 16px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- View All Button -->
-  <button class="view-all-btn" onclick="window.location.href='/all-timetables-for-faculty';">View All Day</button>
-
-  <h1>Timetables for Monday</h1>
-
-  {{#each data}}
-    <h2>{{course}}</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Period</th>
-          <th>Subject</th>
-          <th>Tutor</th>
-          <th>Starting Time</th>
-          <th>Ending Time</th>
-          <th>Course</th> <!-- Add Course column -->
-        </tr>
-      </thead>
-      <tbody>
-        {{#each periods}}
-          {{#unless _id}}
-            {{#if this}}
-              {{#each this}}
-                <tr>
-                  <td>{{@../key}}</td> <!-- Period name (e.g., firstPeriod) -->
-                  <td>{{this.subject}}</td>
-                  <td>{{this.tutor}}</td>
-                  <td>{{this.startingTime}}</td>
-                  <td>{{this.endingTime}}</td>
-                  <td>{{this.course}}</td> <!-- Add Course field -->
-                </tr>
-              {{/each}}
-            {{/if}}
-          {{/unless}}
-        {{/each}}
-      </tbody>
-    </table>
-  {{/each}}
-</body>
-</html>
+        </div>
+    </div>
+</section>
+</main>
