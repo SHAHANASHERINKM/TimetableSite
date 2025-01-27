@@ -49,28 +49,7 @@ border:1px solid #563d7c;
   }
   .justify-content-center{
     width:100%;
-  }
-  
-  
-  /*---Media Queries --*/
-  @media (max-width: 992px) {
-  
-  
-  }
-  @media (max-width: 768px) {
-  
-  
-  }
-  @media (max-width: 576px) {
-   
-   
-    .btncontent{
-      width: 15px !important;
-    }
-    
-    
-  }
-  
+  }  
     .btncontent{
         height: 142px;
         border-color: black;

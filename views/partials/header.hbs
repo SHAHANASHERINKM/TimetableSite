@@ -6,23 +6,25 @@
     
         <main>
 
-            <nav class="navbar navbar-expand-lg">
+            <nav id="navbar" class="navbar navbar-expand-lg">
                 <div class="container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button id="navbar-toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <a class="navbar-brand" href="/">
+                    <a id="navbar-brand" class="navbar-brand" href="/">
                         <strong><span>IT</span> Department</strong>
-                        <p>Kannur University, Mangattupramba</p>
+                        <p id="navbar-p">Kannur University, Mangattupramba</p>
                     </a>
-                       
-                    <div class="d-lg-none">
-                        <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-                        <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                     {{#if usermode.name}}
+                     <div id="nav-name" class="d-lg-none">
+                        <a href="/" class="me-3">{{usermode.name}}</a>
                     </div>
-
+                    {{else}}
+                    <div class="d-lg-none">
+                        <a href="/login" class="bi-person custom-icon me-3"></a>
+                    </div>
+                     {{/if}}
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">

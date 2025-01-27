@@ -3,11 +3,16 @@ require("../utils/findScheduleForMsg");
 require("../utils/sendingPeriodRemainders");
 const studentCollection = require('../models/studentUser');
 const facultyCollection = require('../models/facultyUser');
+const notificationCollection = require("../models/maileToStudModel");
 // Import collections
 const { mcaS1collection,mcaS2collection,mcaS3collection,mcaS4collection,
   mscS1collection,mscS2collection,mscS3collection,mscS4collection 
 } = require('../models/timetable');
-const {getTimetablesForTutor,getAllTimetables,currentDayTimeTable,getStudentEmail,getAllStudentEmail,getAllTimetablesForHOD,getTimeTableByeId,editAndUpdatedTable,addTimeTable} = require("../utils/filterFacultyTimeTable");
+const {getTimetablesForTutor,getAllTimetables,
+       currentDayTimeTable,getStudentEmail,
+       getAllStudentEmail,getAllTimetablesForHOD,
+       getTimeTableByeId,editAndUpdatedTable,
+       addTimeTable,getNotification} = require("../utils/filterFacultyTimeTable");
 const {sendInfoEmail,sendInfoEmailToAll} = require("../utils/sendingEmails");
 const { get } = require('mongoose');
 
@@ -226,6 +231,8 @@ module.exports = {
                 try {
                   const user = await studentCollection.findOne({ username });
                   req.session.studentId = user._id;
+                  // req.session.course = user.course
+                  // req.session.semester = user.semester
               
                   // Check if the username exists
                   if (!user) {
@@ -242,11 +249,16 @@ module.exports = {
                     errors.usertype = "Role not matched.";
                     return res.render("login", { errors, username,password });
                   }
-              
+                  const course = user.course
+                  const semester = user.semester
+                  const [notificatin,genaralnotification] = await getNotification({course,semester},res);
+                  console.log(notificatin,genaralnotification);
                   // Store user info in session
                   req.session.username = user.username;
                   req.session.name = user.name;
                   req.session.usertype = user.usertype;
+                  req.session.notification = notificatin
+                  req.session.genaralnotification = genaralnotification
                   req.session.isStudent = true
                   req.session.isLogin=true
                   // Redirect to home page and pass the username
@@ -428,7 +440,7 @@ module.exports = {
           const studentData = await studentCollection.findOne({_id:studentId},{course:1,semester:1})
           const course = studentData.course
           const semester = studentData.semester
-          const timetable =await currentDayTimeTable(course,semester,day);
+          const timetable =await currentDayTimeTable(course,semester,"Monday");
           res.render('viewStudTimetable',{data:timetable[0],usermode:req.session});
           },
           showAllDayTimeTableForStudent:async(req,res)=>{
@@ -458,7 +470,7 @@ module.exports = {
             console.log(facultyName.name);
             const timetables = await getTimetablesForTutor(day, facultyName.name);
             console.log(timetables)
-            res.render('viewFacTimetable',{data:timetables,day:currentDay,tutor:facultyName.name,usermode:req.session});
+            res.render('viewFacTimetable',{data:timetables,day:day,tutor:facultyName.name,usermode:req.session});
           },
           saveTimeTable:async(req,res)=>{
             const errors = {};

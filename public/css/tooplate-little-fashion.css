@@ -111,7 +111,13 @@ p {
   font-size: var(--p-font-size);
   font-weight: var(--font-weight-light);
 }
-
+@media (max-width:992px) {
+  p {
+    color: var(--p-color);
+    font-size: 16px;
+    font-weight: var(--font-weight-light);
+  }
+}
 a, 
 button {
   touch-action: manipulation;
@@ -263,6 +269,18 @@ strong {
 .custom-icon {
   display: inline-block;
   vertical-align: middle;
+  position: absolute;
+  top: 45px;
+  right: 15px;
+}
+@media (max-width:920px) {
+  .custom-icon {
+    display: inline-block;
+    vertical-align: middle;
+    position: absolute;
+    top: 20px;
+    right: 5px;
+  }
 }
 
 .bi-bag.custom-icon {
@@ -680,12 +698,23 @@ button:focus:not(:focus-visible) {
 }
 
 .accordion-button {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: var(--font-weight-normal);
   padding-top: 1.5rem;
   padding-right: 0;
   padding-bottom: 1.5rem;
   padding-left: 0;
+}
+
+@media (max-width:992px) {
+  .accordion-button {
+    font-size: 1rem;
+    font-weight: var(--font-weight-normal);
+    padding-top: 1.5rem;
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+    padding-left: 0;
+  }
 }
 
 .accordion-body {
@@ -969,11 +998,11 @@ button:focus:not(:focus-visible) {
   }
 
   h2 {
-    font-size: 36px;
+    font-size: 25px;
   }
 
   h3 {
-    font-size: 32px;
+    font-size: 24px;
   }
 
   h4 {
@@ -1027,6 +1056,13 @@ button:focus:not(:focus-visible) {
   .section-padding {
     padding-top: 4rem;
     padding-bottom: 4rem;
+  }
+  @media (max-width:920px) {
+    .site-header.section-padding,
+    .section-padding {
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+    }
   }
 
   .site-header-image.section-padding {

@@ -1,6 +1,8 @@
 const { mcaS1collection, mcaS2collection, mcaS3collection, mcaS4collection, mscS1collection, mscS2collection, mscS3collection, mscS4collection } = require('../models/timetable');
 const StudentCollection = require("../models/studentUser");
 const studentCollection = require('../models/studentUser');
+const notificationCollection = require("../models/maileToStudModel");
+const notificationToAllCollection = require("../models/mailToAllStudentModel");
 const collections = [
   { name: 'MCA S1', collection: mcaS1collection },
   { name: 'MCA S2', collection: mcaS2collection },
@@ -233,5 +235,11 @@ module.exports={
     } catch (error) {
       console.log(error)
     }
+  },
+  getNotification:async({course,semester},res)=>{
+     const notificatons = await notificationCollection.find({course:course,semester:semester}).sort({_id:-1}).limit(2).lean();
+     const notificationToAll = await notificationToAllCollection.find().sort({_id:-1}).limit(2).lean();
+
+     return [notificatons,notificationToAll];
   }
 }

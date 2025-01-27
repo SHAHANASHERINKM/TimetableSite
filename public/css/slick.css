@@ -1,3 +1,39 @@
+@media(max-width:920px){
+    #navbar-p{
+      font-size: 8px;
+    }
+    #navbar-brand{
+        font-size: 20px;
+    }
+    #navbar-toggler{
+        position: relative;
+        top: -10px;
+    }
+    #navbar{
+        padding: 0;
+    }
+    #slick-title{
+        font-size: 25px;
+    }#custom-btn{
+        font-size: 8px;
+    }
+    .about{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    #nav-name{
+        display: none;
+    }
+}
+#slick-slide-control00{
+    display: none;
+}
+li.slick-active::marker{
+    display: none;
+}
+li.slick-active{
+    display: none;
+}
 /* Slider */
 .slick-slider
 {
