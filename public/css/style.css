@@ -1,5 +1,25 @@
-
-
+#successMsg{
+  color: green;
+  font-size: 18px;
+}
+#login-welcome{
+  position: relative;
+  top: 140px;
+  left: 0px;
+  border-bottom: none
+}
+#passwordshow{
+    height: 0;
+    width: 0px;
+    background: transparent;
+    border: none;
+    position: relative;
+    left: 90%;
+    top: 12px;
+}
+#faculty-login-form{
+  margin-top: 2rem;
+}
 /* Timetable Container */
 .timetable-container {
 position: relative;

@@ -6,6 +6,12 @@
   <div class="form-container">
     <!-- Send to All Button -->
     <a href="#" id="sendToAllBtn" class="send-to-all-btn">Send to All</a>
+    {{#if result}}
+     <p class="success-message" id="successMsg">Email sent successfully!</p>
+     {{/if}}
+     {{#if errors}}
+      <p class="success-message" id="successMsg" style="color: red;">Please Fill All Informations</p>
+     {{/if}}
     <h2 class="fac-h2">Send Email to Students</h2>
     <form class="emailForm" action="/send-informations" method="post">
       <!-- Course and Semester Selection in One Row -->
@@ -15,10 +21,8 @@
           <label for="course">Select Course</label>
           <select id="course" name="course">
             <option value="" disabled selected>Select a course</option>
-            <option value="BCA">BCA</option>
+            <option value="BCA">MSC</option>
             <option value="MCA">MCA</option>
-            <option value="BSc Computer Science">BSc Computer Science</option>
-            <option value="MSc Computer Science">MSc Computer Science</option>
           </select>
         </div>
 
@@ -54,8 +58,8 @@
 
       <!-- Success/Error Messages -->
       <div class="email-form-group">
-        <p class="success-message" id="successMessage" style="display: none;">Email sent successfully!</p>
-        <p class="error-message" id="errorMessage" style="display: none;">Failed to send the email. Please try again.</p>
+        <h5 class="success-message" id="successMessage" style="display: none;">Email sent successfully!</h5>
+        <h5 class="error-message" id="errorMessage" style="display: none;">Failed to send the email. Please try again.</h5>
       </div>
     </form>
   </div>
@@ -87,12 +91,10 @@
     const emailSubject = document.getElementById("emailSubject").value;
     const emailMessage = document.getElementById("emailMessage").value;
 
-    // Validation to ensure no empty fields
-    if (!course || !semester ) {
+    if (!emailSubject || !emailMessage) {
       alert("Please fill in all the fields before sending!");
       return;
     }
-
     // Prepare the data to send
     const requestData = {
       subject: emailSubject,

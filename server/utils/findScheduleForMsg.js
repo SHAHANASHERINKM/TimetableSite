@@ -36,7 +36,6 @@ const timetableCollections = {
         try {
             // Fetch all students
             const students = await studentCollection.find();
-        
             const results = [];
         
             for (const student of students) {
@@ -45,7 +44,6 @@ const timetableCollections = {
               // Determine the correct timetable collection based on course and semester
               const collectionKey = `${course.toUpperCase()}-${semester.toUpperCase()}`;
               const timetableCollection = timetableCollections[collectionKey];
-        
               if (!timetableCollection) {
                 console.error(`No timetable found for course ${course} and semester ${semester}`);
                 continue;
@@ -53,7 +51,6 @@ const timetableCollections = {
         
               // Fetch the timetable for the given day
               const timetable = await timetableCollection.findOne({ day });
-        
               if (!timetable) {
                 console.log(`No timetable found for ${day} for course ${course} semester ${semester}`);
                 continue;
@@ -79,7 +76,6 @@ const timetableCollections = {
             // Print the results
             console.log('Student Schedules:');
             JSON.stringify(results, null, 2);
-            
             return results;
           } catch (err) {
             console.error('Error fetching data:', err);
@@ -92,11 +88,30 @@ const timetableCollections = {
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const d = new Date();
 let day = days[d.getDay()];
+
+async function executeStudentScheduleUpdate() {
+  try {
+      await Student.deleteMany({});
+      const results = await getStudentSchedule(day);
+      const data = await Student.insertMany(results);
+      console.log('Student schedule updated successfully:', data);
+  } catch (error) {
+      console.error('Error updating student schedule:', error);
+  }
+}
+
 cron.schedule('0 0 * * *', async () => {
-    console.log('Function executed at midnight!');
-    await Student.deleteMany({}).then(()=>{
-        getStudentSchedule(day).then(async (results)=>{
-            const data = await Student.insertMany(results);
-        });
-    })
-  });
+  console.log('Function executed at 12:00 AM!');
+  await executeStudentScheduleUpdate();
+});
+
+cron.schedule('0 2 * * *', async () => {
+  console.log('Function executed at 2:00 AM!');
+  await executeStudentScheduleUpdate();
+});
+
+cron.schedule('0 4 * * *', async () => {
+  console.log('Function executed at 4:00 AM!');
+  await executeStudentScheduleUpdate();
+});
+

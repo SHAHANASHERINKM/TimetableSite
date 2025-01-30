@@ -37,8 +37,8 @@
      {{#if error}}
         <p style="color: red;">{{error}}</p>
         {{/if}}
-        <div class="login-form">
-            <div class="forms">
+        <div id="faculty-login-form" class="login-form">
+            <div class="forms"> 
                 <div class="form login">
                     <span class="title"> Faculty/HOD  Registration Form</span>
     
@@ -52,13 +52,13 @@
             {{/if}} 
                         </div>
                         <div class="input-field">
-                            <input type="text" name="email" id="email" placeholder="Enter Your Email Id"value="{{email}}"  >
+                            <input type="text" name="email" id="email"   pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"  placeholder="Enter Your Email Id"value="{{email}}"  >
                            {{#if errors.email}}
                 <div class="error">{{errors.email}}</div>
             {{/if}} 
                         </div>  
                         <div class="input-field">
-                            <input type="phone" name="phone" id="phone" placeholder="Enter Your phone" value="{{phone}}">
+                            <input type="phone" name="phone" id="phone" pattern="[0-9]{1,10}" placeholder="Enter Your phone" value="{{phone}}">
                             {{#if errors.phone}}
                 <div class="error">{{errors.phone}}</div>
             {{/if}} 
@@ -72,6 +72,7 @@
       <div id="usernameError" class="error"></div> <!-- Error message for real-time validation -->
                         </div> 
                         <div class="input-field">
+                             <button type="button" id="passwordshow" class="bi-eye"></button>
                             <input type="password" id="password" name="password"  placeholder="Password"  value="{{password}}">
                             {{#if errors.password}}
                 <div class="error">{{errors.password}}</div>
@@ -131,3 +132,14 @@
     </div>
 </section>
 </main>
+<script>
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.getElementById("passwordshow");
+        toggleBtn.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    });
+</script>

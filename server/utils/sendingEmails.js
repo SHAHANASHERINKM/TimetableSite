@@ -21,43 +21,38 @@ transporter.verify((error,success)=>{
 
 module.exports = {
     sendInfoEmail:async({course,semester,emails,subject,message},res)=>{
+        const result = [];
         try {
-            console.log(emails)
-            console.log(course)
-            console.log(semester)
-            console.log(subject)
-            console.log(message)
+            const newInfo = await new messageToStudentModel({
+                course:course,
+                semester:semester,
+                subject:subject,
+                message:message
+            })
+            await newInfo.save()
             for(const recipient of emails){
+                console.log(recipient)
                 const mailOptions = {
                     from:process.env.AUTH_EMAIL,
                     to:recipient.email,
                     subject:subject,
                     html:`<p>${message}</p>`,
                 }
-                console.log(mailOptions);
-                const newInfo = await new messageToStudentModel({
-                    course:course,
-                    semester:semester,
-                    subject:subject,
-                    message:message
-                })
-                await newInfo.save().then(async res=>{
-                    console.log(res)
-                    const info = await transporter.sendMail(mailOptions);
-                }).catch(err=>{
-                    console.log(err)
-                });
-
+                    await transporter.sendMail(mailOptions);
+                    result.push(res)
             }
+            return result;
         } catch (error) {
              console.log(error);
         }
     },
     sendInfoEmailToAll:async({subject,message,emails},res)=>{
         try {
-            console.log(emails)
-            console.log(subject)
-            console.log(message)
+            const newInfo = await new messageToAllStudentModel({
+                subject:subject,
+                message:message
+            })
+            await newInfo.save()
             for(const recipient of emails){
                 const mailOptions = {
                     from:process.env.AUTH_EMAIL,
@@ -65,18 +60,7 @@ module.exports = {
                     subject:subject,
                     html:`<p>${message}</p>`,
                 }
-                console.log(mailOptions);
-                const newInfo = await new messageToAllStudentModel({
-                    subject:subject,
-                    message:message
-                })
-                await newInfo.save().then(async res=>{
-                    console.log(res)
-                    const info = await transporter.sendMail(mailOptions);
-                }).catch(err=>{
-                    console.log(err)
-                });
-
+                await transporter.sendMail(mailOptions)
             }
         } catch (error) {
              console.log(error);

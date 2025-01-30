@@ -10,7 +10,10 @@ const facultyloginSchema = new mongoose.Schema({
     },
     phone:{
       type:String,
-      required:true
+      required:true,
+      set:function(value){
+        return "+91"+value
+      }
     },
     username:{
       type:String,

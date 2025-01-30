@@ -26,41 +26,81 @@
                   <!-- Row for the Day -->
                   <tr>
                       <td rowspan="5">
-                          <input type="text" name="day" value="{{data.day}}">
+                          <input type="text" name="day" value="{{data.day}}" readonly>
                       </td>
                       <!-- First Row for Subject -->
                       <td><input type="text" name="subject1" value="{{data.firstPeriod.0.subject}}" ></td>
                       <td><input type="time" name="startTime1"  value="{{data.firstPeriod.0.startingTime}}" ></td>
                       <td><input type="time" name="endTime1"  value="{{data.firstPeriod.0.endingTime}}"></td>
-                      <td><input type="text" name="tutor1"  value="{{data.firstPeriod.0.tutor}}"></td>
+                      {{!-- <td><input type="text" name="tutor1"  value="{{data.firstPeriod.0.tutor}}"></td> --}}
+                     <td>
+                        <select id="tutor" name="tutor1">
+                          <option value="{{data.firstPeriod.0.tutor}}" selected>{{data.firstPeriod.0.tutor}}</option>
+                           {{#each tutors}}
+                           <option value="{{name}}">{{name}}</option>
+                           {{/each}}
+                        </select>
+                    </td>
                   </tr>
                   <!-- Second Row for Subject -->
                   <tr>
                       <td><input type="text" name="subject2" value="{{data.secondPeriod.0.subject}}" ></td>
                       <td><input type="time" name="startTime2"  value="{{data.secondPeriod.0.startingTime}}" ></td>
                       <td><input type="time" name="endTime2"  value="{{data.secondPeriod.0.endingTime}}"></td>
-                      <td><input type="text" name="tutor2"  value="{{data.secondPeriod.0.tutor}}"></td>
+                      {{!-- <td><input type="text" name="tutor2"  value="{{data.secondPeriod.0.tutor}}"></td> --}}
+                      <td>
+                        <select id="tutor" name="tutor2">
+                          <option value="{{data.secondPeriod.0.tutor}}" selected>{{data.secondPeriod.0.tutor}}</option>
+                           {{#each tutors}}
+                           <option value="{{name}}">{{name}}</option>
+                           {{/each}}
+                        </select>
+                    </td>
                   </tr>
                   <!-- Third Row for Subject -->
                   <tr>
                       <td><input type="text" name="subject3" value="{{data.thirdPeriod.0.subject}}" ></td>
                       <td><input type="time" name="startTime3"  value="{{data.thirdPeriod.0.startingTime}}" ></td>
                       <td><input type="time" name="endTime3"  value="{{data.thirdPeriod.0.endingTime}}"></td>
-                      <td><input type="text" name="tutor3"  value="{{data.thirdPeriod.0.tutor}}"></td>
+                      {{!-- <td><input type="text" name="tutor3"  value="{{data.thirdPeriod.0.tutor}}"></td> --}}
+                      <td>
+                        <select id="tutor" name="tutor3">
+                          <option value="{{data.thirdPeriod.0.tutor}}" selected>{{data.thirdPeriod.0.tutor}}</option>
+                           {{#each tutors}}
+                           <option value="{{name}}">{{name}}</option>
+                           {{/each}}
+                        </select>
+                    </td>
                   </tr>
                   <!-- Fourth Row for Subject -->
                   <tr>
                       <td><input type="text" name="subject4" value="{{data.fourthPeriod.0.subject}}" ></td>
                       <td><input type="time" name="startTime4"  value="{{data.fourthPeriod.0.startingTime}}" ></td>
                       <td><input type="time" name="endTime4"  value="{{data.fourthPeriod.0.endingTime}}"></td>
-                      <td><input type="text" name="tutor4"  value="{{data.fourthPeriod.0.tutor}}"></td>
+                      {{!-- <td><input type="text" name="tutor4"  value="{{data.fourthPeriod.0.tutor}}"></td> --}}
+                      <td>
+                        <select id="tutor" name="tutor4">
+                          <option value="{{data.fourthPeriod.0.tutor}}" selected>{{data.fourthPeriod.0.tutor}}</option>
+                           {{#each tutors}}
+                           <option value="{{name}}">{{name}}</option>
+                           {{/each}}
+                        </select>
+                    </td>
                   </tr>
                   <!-- fifth Row for Subject -->
                   <tr>
                       <td><input type="text" name="subject5" value="{{data.fifthPeriod.0.subject}}" ></td>
                       <td><input type="time" name="startTime5"  value="{{data.fifthPeriod.0.startingTime}}" ></td>
                       <td><input type="time" name="endTime5"  value="{{data.fifthPeriod.0.endingTime}}"></td>
-                      <td><input type="text" name="tutor5"  value="{{data.fifthPeriod.0.tutor}}"></td>
+                      {{!-- <td><input type="text" name="tutor5"  value="{{data.fifthPeriod.0.tutor}}"></td> --}}
+                      <td>
+                        <select id="tutor" name="tutor5">
+                           <option value="{{data.fifthPeriod.0.tutor}}" selected>{{data.fifthPeriod.0.tutor}}</option>
+                           {{#each tutors}}
+                           <option value="{{name}}">{{name}}</option>
+                           {{/each}}
+                        </select>
+                    </td>
                   </tr>
               </tbody>
           </table>

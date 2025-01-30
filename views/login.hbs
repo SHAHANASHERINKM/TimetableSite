@@ -4,9 +4,13 @@
       .error { color: red; font-size: 0.9em; }
     </style>
     <div class="container">
+     {{#if name}}
+      <h4 class="fac-h2" id="login-welcome">Welcome <span>{{name}}</span></h4>
+     {{/if}}
       <div class="login-form">
         <div class="forms">
           <div class="form login">
+          
             <span class="title">Login</span>
 
             <form id="loginForm" action="/login" method="post">
@@ -24,13 +28,8 @@
               </div>
 
               <div class="input-field">
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                  value="{{password}}"
-                />
+                <button type="button" id="passwordshow" class="bi-eye"></button>
+                <input type="password" id="password" name="password" placeholder="Password" value="{{password}}"/>
                 {{#if errors.password}}
                   <div class="login-error">{{errors.password}}</div>
                 {{/if}}
@@ -63,3 +62,14 @@
         </div>
       </div>
     </div>
+<script>
+    const passwordInput = document.getElementById("password");
+    const toggleBtn = document.getElementById("passwordshow");
+        toggleBtn.addEventListener("click", () => {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    });
+</script>

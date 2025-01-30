@@ -21,21 +21,35 @@ const twilioClient = twilio(accountSid, authToken);
         }
       }
      async function sendReminders(){
-        const students = await Student.find();
         const now = new Date();
         const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now
           .getMinutes()
           .toString()
           .padStart(2, '0')}`;
-        for (const student of students) {
-          for (const period of student.schedule) {
-            if (period.startingTime === currentTime) {
-              const message = `Hi ${student.name}, this is a reminder for your class on "${period.subject}" starting at ${period.startingTime}.`;
-              await sendSMS(student.phone, message);
-            }
+           console.log(currentTime)
+          const students = await Student.find({
+            'schedule.startingTime':currentTime,
+          });
+          console.log(students)
+          if (students.length === 0) {
+            console.log('No reminders to send at this time.');
+            return;
           }
-        }
+          for (const student of students) {
+            // Find the exact period matching the current time
+            const currentPeriod = student.schedule.find(
+              (period) => period.startingTime === currentTime
+            );
+            if (currentPeriod) {
+              const message = `Hi ${student.name}, this is a reminder for your class on "${currentPeriod.subject}" starting at ${currentPeriod.startingTime}.`;
+              try {
+                await sendSMS(student.phone, message);
+              } catch (error) {
+                console.error(`Failed to send SMS to ${student.phone}:`, error.message);
+              }
+            }
       }
+    }
       cron.schedule('* * * * *', () => {
         console.log('Checking schedules and sending reminders...');
         sendReminders();
