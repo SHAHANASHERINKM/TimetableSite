@@ -22,11 +22,11 @@
         {{!-- <td>{{increment @index}}</td> --}}
         <td>{{name}}</td>
         <td>{{email}}</td>
-        <td>+91 {{phone}}</td>
+        <td>{{phone}}</td>
         <td>
           <div class="std-action-buttons">
             <button class="std-edit-btn"><a href="/edit-faculty/{{this._id}}">Edit</a></button>
-            <button class="std-delete-btn"><a href="/delete-faculty/{{this._id}}" onclick="return confirm("Are sure delete {{this.name}}?")">Delete</a></button>
+            <button class="std-delete-btn"><a href="/delete-faculty/{{this._id}}" onclick="return confirm('Are you sure to delete {{this.name}}?')">Delete</a></button>
           </div>
         </td>
       </tr>

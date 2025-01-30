@@ -24,14 +24,14 @@
 .timetable-container {
 position: relative;
 width: 90%;
-max-width: 700px;
+max-width: 900px;
 background: white;
 padding: 20px;
 border-radius: 10px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 text-align: left;
 margin-top: 2rem;
-margin-left: 15rem; 
+margin-left: 11rem; 
 }
 @media (max-width:760px) {
   .timetable-container{

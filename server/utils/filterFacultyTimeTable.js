@@ -224,6 +224,7 @@ module.exports={
         'fifthPeriod.0.endingTime':data.endTime5,
         'fifthPeriod.0.tutor':data.tutor5
      }
+     
      const day = data.day;
      const existingDay = await collection.findOne({day:day}).lean();
      if(existingDay){

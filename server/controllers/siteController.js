@@ -526,6 +526,7 @@ module.exports = {
           saveTimeTable:async(req,res)=>{
             const errors = {};
            const { action } = req.body;
+           const tutors = await facultyCollection.find({},{name:1}).lean();
             try{
               if (action === "save") {
                    const course=req.session.course;
@@ -533,13 +534,23 @@ module.exports = {
                    const data = req.body
                    const result = await addTimeTable({course,semester,data},res);
                    if(result){
-                    res.render("addTimetable",{course,semester,usermode:req.session})
+                    res.render("addTimetable",{course,semester,tutors,usermode:req.session})
                    }else{
                     errors.day = "Day already exit.";
-                    res.render("addTimetable",{errors,course,semester,usermode:req.session});
+                    res.render("addTimetable",{errors,course,semester,tutors,usermode:req.session});
                    }
             }else{
-              res.render('hodHome',{usermode:req.session});
+              const course=req.session.course;
+              const semester=req.session.semester;
+              const data = req.body
+              const result = await addTimeTable({course,semester,data},res);
+              console.log(result);
+              if(result){
+                res.render('hodHome',{usermode:req.session});
+               }else{
+                errors.day = "Day already exit.";
+                res.render("addTimetable",{errors,course,semester,tutors,usermode:req.session});
+               }
             }
           }
           catch(err){
