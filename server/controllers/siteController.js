@@ -4,7 +4,7 @@ require("../utils/sendingPeriodRemainders");
 const studentCollection = require('../models/studentUser');
 const facultyCollection = require('../models/facultyUser');
 const notificationCollection = require("../models/maileToStudModel");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 // Import collections
 // const { mcaS1collection,mcaS2collection,mcaS3collection,mcaS4collection,
 //   mscS1collection,mscS2collection,mscS3collection,mscS4collection 

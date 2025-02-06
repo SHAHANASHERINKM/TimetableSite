@@ -2,7 +2,7 @@ const twilio = require('twilio');
 const cron = require('node-cron');
 const mongoose = require('mongoose');
 const Student = require("../models/periodRemainder");
-const { studentSignup_validation } = require('../controllers/siteController');
+//const { studentSignup_validation } = require('../controllers/siteController');
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID // Replace with your Account SID
 const authToken = process.env.TWILIO_AUTH_TOKEN // Replace with your Auth Token

@@ -99,7 +99,7 @@ async function executeStudentScheduleUpdate() {
       console.error('Error updating student schedule:', error);
   }
 }
-
+/*
 cron.schedule('0 0 * * *', async () => {
   console.log('Function executed at 12:00 AM!');
   await executeStudentScheduleUpdate();
@@ -114,4 +114,8 @@ cron.schedule('0 4 * * *', async () => {
   console.log('Function executed at 4:00 AM!');
   await executeStudentScheduleUpdate();
 });
-
+*/
+async function name(params){
+  await executeStudentScheduleUpdate();
+}
+name();
